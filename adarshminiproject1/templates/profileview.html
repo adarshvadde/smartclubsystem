@@ -1,0 +1,94 @@
+<html>
+        <head>
+            <title>GIT</title>
+        </head>
+        <script src="https://code.jquery.com/jquery-3.5.1.js"integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc="crossorigin="anonymous"></script>
+
+    <style>
+        * {
+            box-sizing: border-box;
+          }
+a{text-decoration:none;color:black}
+        li{list-style:none}          input:focus{background-color: #D3F8F9;transition: all 1s ease 0s;border: 1px solid transparent;outline: 0;}          #left-bar{width:160px;background-image: linear-gradient(135deg, #ABDCFF 10%, #0396FF 100%);height:1400px;position:fixed;margin-top:-30px;}
+        #left-bar ul{margin-left:-35px;margin-top:100px;}
+        #left-bar li{list-style: none;width:140px;border-radius:30px;margin-top:20px;background-image: linear-gradient(135deg, #E3FDF5 10%, #FFE6FA 100%);font-size:20px;padding:5px 5px 5px 15px;border:1px solid transparent;}
+        #left-bar li:hover{background-image: linear-gradient(55deg, #F97794 10%, #ABDCFF 100%);}
+        #pic{height:100px;width:100px;border-radius:50px;margin-left:30px;margin-top:80px;}
+        #pic img{height:100px;width:100px;border-radius:50px;}
+        #name{margin-left:5px;width:150px;text-align:center;margin-top:15px;padding-top:7px;border-radius:5px;background:white;}
+        #logo{position:fixed;background-image: linear-gradient(190deg, #ABDCFF 50%, #0396FF 100%);width:1305px;text-align:center;border-radius:5px;margin-left:165px;margin-top:-7px;}
+        #profile{background-image: linear-gradient(190deg, #ABDCFF 50%, #86FDE8 100%);height:900px;width:560px;padding:5px 5px 5px 5px;border-radius:5px;margin-top:95px;position:fixed;margin-left:165px;}
+        #profile img{width:550px;height:400px;border-radius:5px;}
+        #picc{width:100px;height:100px ;border-radius:80px;margin-left:40px;position:absolute;margin-top:-150px;}
+        #picc img{width:100px;height:100px ;border:2px solid #86FDE8;border-radius:80px;}
+        #namee{width:150px;padding:5px 5px 5px 5px;text-align:center;margin-top:-35px;margin-left:20px;background:white;position:absolute;border-radius:5px;}
+        #rollno{width:550px;height:50px;background:white;padding:15px 5px 5px 5px;margin-top:10px;border-radius:5px;}
+        #department{width:550px;height:50px;background:white;padding:15px 5px 5px 5px;margin-top:5px;border-radius:5px;}
+        #email{width:550px;height:50px;background:white;padding:15px 5px 5px 5px;margin-top:5px;border-radius:5px;}
+        #totacc{width:550px;height:50px;background:white;padding:15px 5px 5px 5px;margin-top:5px;border-radius:5px;}
+        #mi{position:fixed;margin-top:95px;overflow-x:scroll;border-radius:5px;padding:15px 5px 5px 5px;height:650;width:740px;background-image: linear-gradient(190deg, #ABDCFF 50%, #86FDE8 100%);margin-left:730px;}
+        #mid{margin-top:-7px;border-radius:5px;padding:15px 5px 5px 5px;display:inline-flex;background:;}
+        #date {margin-left:10px;text-align:center;width:100px;border-radius:5px;border:1px solid gray;}
+        #activity {margin-left:1px;text-align:center;width:500px;border-radius:5px;border:1px solid gray;}
+        #score {margin-left:1px;width:100px;text-align:center;border-radius:5px;border:1px solid gray;}
+        #mi::-webkit-scrollbar{width:1px;}
+        #mi { overflow-x: hidden;}
+    </style>
+    <body>
+        <div id="left-bar">
+             <a href="/profile{{para}}"><div id="pic">
+                <img src="{{profile_img}}">
+            </div>
+            <div id="name">{{name}}</div></a>
+            <ul>
+            <a href="/{{para1}}"><li>Home</li></a>
+            <a href="/about{{para}}"><li>About</li></a>
+            <a href="/departments{{para}}"><li>Departments</li></a>
+            <a href="/clubs{{para}}"><li>Clubs</li></a>
+            <a href="/{{log.0}}"><li>{{log.1}}</li></a>
+            </ul>
+        </div>
+        <div id="logo">
+            <img src="/static/Gates.png" >
+        </div>
+    <div id="profile">
+        <img src="{{viewcover_pic}}">
+        <div id="picc">
+            <img src="{{viewprofile_img}}">
+        </div>
+        <div id="namee">{{viewname}}</div>
+        <div id="rollno">Roll Number: {{viewrollno}}</div>
+        <div id="department">Department: {{viewdepartment}}</div>
+        <div id="email">Email: {{viewemail}}</div>
+        <div id="totacc">Total Activites: {{total}}</div>
+
+    </div>
+    <div id="mi">
+
+    <div id="mid">
+        <div id="date">
+            Date<hr><br> {% for j in quiz %}
+            {{j.date}}<br><br>
+            {% endfor %}
+         </div>
+         <div id="activity">
+         Activity<hr><br>
+         {% for j in quiz %}
+         <a href="/quizresult{{para}}/{{j.title}}">{{j.title}}</a><br><br>
+         {% endfor %}
+         </div>
+         <div id="score">
+             Score<hr><br> {% for j in quiz %}
+             {{j.score}}<br><br>
+             {% endfor %}   
+         </div>
+    
+</div>
+</div>
+
+{% include 'speech.html'%}
+<style>
+    #mic{margin-top:600px;}
+</style>
+    </body>
+    </html>

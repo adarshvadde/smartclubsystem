@@ -1,0 +1,153 @@
+    <html>
+        <head>
+            <title>GIT</title>
+        </head>
+        <script src="https://code.jquery.com/jquery-3.5.1.js"integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc="crossorigin="anonymous"></script>
+
+    <style>
+        * {
+            box-sizing: border-box;
+          }
+a{text-decoration:none;color:black}
+        li{list-style:none}          input:focus{background-color: #D3F8F9;transition: all 1s ease 0s;border: 1px solid transparent;outline: 0;}        #left-bar{width:160px;background-image: linear-gradient(135deg, #ABDCFF 10%, #0396FF 100%);height:1400px;position:fixed;margin-top:-10px;}
+        #left-bar ul{margin-left:-35px;margin-top:100px;}
+        #left-bar li{list-style: none;width:150px;border-radius:30px;margin-top:20px;background-image: linear-gradient(135deg, #E3FDF5 10%, #FFE6FA 100%);font-size:20px;padding:5px 5px 5px 15px;border:1px solid transparent;}
+        #left-bar li:hover{background-image: linear-gradient(55deg, #F97794 10%, #ABDCFF 100%);}
+        #pic{height:100px;width:100px;border-radius:50px;margin-left:30px;margin-top:80px;}
+        #pic img{height:100px;width:100px;border-radius:50px;}
+        #name{margin-left:5px;width:150px;text-align:center;margin-top:15px;padding-top:7px;border-radius:5px;background:white;}
+        #middle{height:900px;background:white;width:1305px;margin-left:165px;margin-top:-10px;position:relative;border-radius:5px;}
+        #heading{background: url(/static/venu1.jpg);background-attachment: fixed;width: 1305px;height: 645px;background-size:1480px 800px;background-repeat;no-repeat; position: relative;overflow: hidden;margin-top: 1px;font-size:41px;;border-radius:5px;border:2px solid #81FFEF;}
+        #heading > header {position: absolute;bottom: 0;left: 0;width: 1350px;;padding: 20px 10px;background: inherit;background-attachment: fixed;}
+#heading > header::before {content: "";position: absolute;margin-top: -550px;left: 0;width: 30%;height: 1400px;background: linear-gradient(135deg, #81FFEF 10%, #F067B4 100%);;background-attachment: fixed;-webkit-filter: blur(30px);filter: blur(100px);transform: scale(2) translateY(20px);transform:rotate(90deg)}
+        #heading >header>  h4 {margin: 0;color: white;position: relative;z-index: 1;font-family: Arial, Helveti sans-serif;background: linear-gradient(to right, #f32170, #ff6b08, #cf23cf);-webkit-text-fill-color: transparent;-webkit-background-clip: text;        }
+                        .registration{width:230px;height:30px;padding:5px 5px 5px 5px;border-radius:5px;margin-top:-50px;margin-left:1050px;background-image: linear-gradient(55deg, #F97794 10%, #ABDCFF 100%);position:absolute;font-size:20px;}
+
+        #logo{background-image: linear-gradient(190deg, #ABDCFF 50%, #0396FF 100%);width:1305px;text-align:center;border-radius:5px;}
+        #departments{width:905;background-image: linear-gradient(190deg, #ABDCFF 50%, #86FDE8 100%);margin-top:3px;overflow-x:scroll;display:inline-block;border-radius:5px;}
+        #departments ul{border-radius:5px;width:1500;height:145px;margin-top:-160px;padding-top:5px;padding-bottom:5px;position: relative;animation: mymove 15s infinite;}
+        #departments ul li{height:150px;width:140px;border:1px solid #86FDE8;text-align:center;border-radius:5px;display:inline-block;font-size:30px;padding-top:40px;margin-top:5px;margin-left:0px;}
+        #departments  ul li img{height:110px;width:140px;border-radius:5px;display:inline-block;font-size:20px;padding-top:0px;margin-top:-40px;background:white}
+        #departments ul li div{height:40px;width:140px;border:1px solid #86FDE8;font-size:25px;text-align:center;margin-top:0px;border-radius:5px;padding-top:10px;background:white;}
+        #clubs{width:905;background-image: linear-gradient(190deg, #ABDCFF 50%, #86FDE8 100%);margin-top:3px;overflow-x:scroll;display:inline-block;border-radius:5px;}
+        #clubs ul{border-radius:5px;width:1500px;height:145px;margin-top:-100px;padding-top:5px;padding-bottom:5px;position: relative;animation: mymove 15s infinite;}
+        #clubs  ul li{height:150px;width:140px;border:1px solid #86FDE8;text-align:center;border-radius:5px;display:inline-block;font-size:20px;padding-top:40px;margin-top:5px;}
+        #clubs  ul li img{height:110px;width:140px;border-radius:5px;display:inline-block;font-size:20px;padding-top:0px;margin-top:-40px;background:white}
+        #clubs ul li div{height:40px;width:140px;border:1px solid #86FDE8 ;font-size:20px;text-align:center;margin-top:0px;border-radius:5px;padding-top:5px;background:white;position:relative}
+        #updateheading{font-size:25px;height:40px;margin-top:-370px;width:397px;position:absolute;margin-left:909;padding-top:7px;border-radius:5px;background-image: linear-gradient(50deg, #F97794 50%, #ABDCFF 100%);text-align:center}
+        #updates{background-image: linear-gradient(50deg, #81FFEF 20%, #ABDCFF 80%);position:absolute;width:397px;margin-left:909;margin-top:-328px;height:327px;border-radius:5px;overflow:scroll}
+        #procon{width:433px;height:230px;background-image: linear-gradient(190deg, #ABDCFF 50%, #86FDE8 100%);margin-top:2px;border-radius:5px;position:absolute;}
+        #procon img{width:428px;height:200px;border-radius:5px;padding:5px 0px 5px 5px}
+        #procon1{width:433px;height:230px;background-image: linear-gradient(190deg, #ABDCFF 50%, #86FDE8 100%);margin-top:2px;border-radius:5px;margin-left:436px;position:absolute;}
+        #procon1 img{width:428px;height:200px;border-radius:5px;padding:5px 0px 5px 5px}
+        #procon2{width:433px;height:230px;background-image: linear-gradient(190deg, #ABDCFF 50%, #86FDE8 100%);margin-top:2px;border-radius:5px;margin-left:870px;}
+        #procon2 img{width:428px;height:200px;border-radius:5px;padding:5px 0px 5px 5px}
+
+
+        
+        .clubs::-webkit-scrollbar{width:0px;}
+        .clubs {overflow-x: hidden;}
+        .departments::-webkit-scrollbar{width:0px;}
+        .departments {overflow-x: hidden;}
+        #updates::-webkit-scrollbar{width:1px;}
+        #updates { overflow-x: hidden;}
+        body::-webkit-scrollbar{width:1px;}
+        body { overflow-x: hidden;}
+
+        
+          
+          @keyframes mymove {
+            from {right: 0px;}
+            to {right: 600px;}
+          }
+    </style>
+    <body >
+        <div id="left-bar">
+             <a href="/profile{{para}}"><div id="pic">
+                <img src="{{profile_img}}">
+            </div>
+            <div id="name">{{name}}</div></a>
+            <ul>
+                <a href="/{{para1}}"><li>Home</li></a>
+                <a href="/about{{para}}"><li>About</li></a>
+                <a href="/departments{{para}}"><li>Departments</li></a>
+                <a href="/clubs{{para}}"><li>Clubs</li></a>
+                <a href="/trainingandplacement{{para}}" ><li style="font-size:15px;">Training placement</li></a>
+                 <a href="/{{log.0}}"><li>{{log.1}}</li></a>
+            </ul>
+            
+        </div>
+        <div id="middle">
+            <div id="logo">
+                <img src="/static/Gates.png" >
+                <div style=" font-size:20px;margin-left:1010px;margin-top:-89px;padding-bottom:15px;padding-top:5px;text-align:left">Contacts:<br>
+                    Email:vaddeadarsh150@gmail.com<br>
+                    Phone:8328267589
+                </div>
+            </div>
+            <div id="heading">
+                <header>
+                <h4>Welcome To <br>GATES Institute Of Technology</h4>
+                </header>
+            </div>
+            <div id="departments" class="departments">
+
+                <h4 style="transform:rotate(270deg);font-size:25px;width:100px;margin-left:-33px;margin-top:100px;">Departments</h4>
+                <ul>
+                    <a href="/datascience{{para}}"><li><img src="/static/ds.jpeg"><div> DS </div></li></a>
+                    <a href="/cai{{para}}"><li><img src="/static/ai.jpeg"><div>AI </div></li></a>
+                    <a href="/cse{{para}}"><li><img src="/static/cse.jpeg"><div>CSE </div></li></a>
+                    <a href="/cs{{para}}"><li><img src="/static/cs.jpeg"><div>CS </div></li></a>
+                    <a href="/ece{{para}}"><li><img src="/static/ece.jpeg"><div>ECE </div></li></a>
+                    <a href="/mech{{para}}"><li><img src="/static/me.jpeg"><div>MECH </div></li></a>
+                    <a href="/ce{{para}}"><li><img src="/static/ce.jpeg"><div>CE </div></li></a>
+                    <a href="/eee{{para}}"><li><img src="/static/eee.jpg"><div>EEE </div></li></a>
+                    <a href="/mba{{para}}"><li><img src="/static/mba.png"><div>MBA </div></li></a>
+                    <a href="/mca{{para}}"><li><img src="/static/mca.jpeg"><div>MCA </div></li></a>
+                </ul>
+
+            </div>
+
+            <div id="clubs" class="clubs">
+                <h4 style="transform:rotate(270deg);font-size:25px;width:100px;margin-left:-33px;margin-top:50px;">Clubs</h4>
+
+                <ul>
+                <a href="/pythonclub{{para}}"><li><img src="/static/Pp0.jpg"><div>Python Club</div></li></a>
+                <a href="/codingclub{{para}}"><li><img src="/static/Coding club.png"><div>Codeing Club</div></li></a>
+                <a href="/campus{{para}}"><li><img src="/static/cr.jpg"><div>Campus Radio</div></li></a>
+                <a href="/graphicclub{{para}}"><li><img src="/static/GDC LOGO.jpg"><div>Graphic Club</div></li></a>
+                <a href="/ideaclub{{para}}"><li><img src="/static/idea.jpg"><div>Idea Club</div></li></a>
+                <a href="/literacyclub{{para}}"><li><img src="/static/Screenshot_20230310-131148_WhatsApp.jpg"><div>Literacy Club</div></li></a>
+                <a href="/projectclub{{para}}"><li><img src="/static/pclub.jpg"><div>Project Club</div></li></a>
+                <a href="/speakingclub{{para}}"><li><img src="/static/spe.jpeg"><div>Speaking Club</div></li></a>
+                <a href="/innerwheelclub{{para}}"><li><img src="/static/iweel.jpeg"><div>Innerwheel Club</div></li></a>
+                <a href="/euphoriaclub{{para}}"><li><img src="/static/cultural-club-euphoria-2-1024x496.png"><div>Euphoria Club</div></li></a>
+                </ul>
+            </div>
+            <div id="updateheading">Updates</div>
+
+                <div id="updates">
+                    {% for i in updates %}
+                    <div style="padding-left:20px;margin-top:15px;"> {{i.date}} | {{i.urltext}} <a href="{{i.url}}"><span style="color:#F97794;">Click </span></a></div>
+                    {% endfor %}          
+
+
+                </div>
+            <div id="procon">
+                <img src="/static/venu1.jpg">
+                <div style="text-align:center;padding:5px 5px 5px 5px;background:white;width:425px;margin-left:5px;margin-top:-2px;border-radius:5px;">Main Block </div>
+            </div>
+            <div id="procon1">
+                <img src="/static/graphic 3.jpg">
+                <div style="text-align:center;padding:5px 5px 5px 5px;background:white;width:425px;margin-left:5px;margin-top:-2px;border-radius:5px;">Training and Placements cell </div>
+            </div>
+            <div id="procon2">
+                <img src="/static/vksr.jpeg">
+                <div style="text-align:center;padding:5px 5px 5px 5px;background:white;width:425px;margin-left:5px;margin-top:-2px;border-radius:5px;">MBA Block</div>
+            </div>
+         </div>
+            {% include 'speech.html'%}
+    </body>
+    
+    </html>
+    

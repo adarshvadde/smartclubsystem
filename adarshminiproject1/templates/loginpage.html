@@ -1,0 +1,521 @@
+<html>
+        <head>
+            <title>GIT</title>
+        </head>
+        <script src="https://code.jquery.com/jquery-3.5.1.js"integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc="crossorigin="anonymous"></script>
+    <style>
+        * {
+            box-sizing: border-box;
+          }
+a{text-decoration:none;color:black}
+        li{list-style:none}          input:focus{background-color: #D3F8F9;transition: all 1s ease 0s;border: 1px solid transparent;outline: 0;}        #left-bar{width:160px;background-image: linear-gradient(135deg, #ABDCFF 10%, #0396FF 100%);height:1400px;position:fixed;margin-top:-10px;}
+        #left-bar ul{margin-left:-35px;margin-top:100px;}
+        #left-bar li{list-style: none;width:150px;border-radius:30px;margin-top:20px;background-image: linear-gradient(135deg, #E3FDF5 10%, #FFE6FA 100%);font-size:20px;padding:5px 5px 5px 15px;border:1px solid transparent;}
+        #left-bar li:hover{background-image: linear-gradient(55deg, #F97794 10%, #ABDCFF 100%);}
+        #pic{height:100px;width:100px;border-radius:50px;margin-left:30px;margin-top:80px;}
+        #pic img{height:100px;width:100px;border-radius:50px;}
+        #name{margin-left:5px;width:150px;text-align:center;margin-top:15px;padding-top:7px;border-radius:5px;background:white;}
+        #middle{height:900px;background:white;width:1305px;margin-left:165px;margin-top:-10px;position:relative;border-radius:5px;}
+        #heading{background: url(/static/venu1.jpg);background-attachment: fixed;width: 1305px;height: 645px;background-size:1480px 800px;background-repeat;no-repeat; position: relative;overflow: hidden;margin-top: 1px;font-size:41px;;border-radius:5px;border:2px solid #81FFEF;}
+        #heading > header {position: absolute;bottom: 0;left: 0;width: 1350px;;padding: 20px 10px;background: inherit;background-attachment: fixed;}
+#heading > header::before {content: "";position: absolute;margin-top: -550px;left: 0;width: 30%;height: 1400px;background: linear-gradient(135deg, #81FFEF 10%, #F067B4 100%);;background-attachment: fixed;-webkit-filter: blur(30px);filter: blur(100px);transform: scale(2) translateY(20px);transform:rotate(90deg)}
+        #heading >header>  h4 {margin: 0;color: white;position: relative;z-index: 1;font-family: Arial, Helveti sans-serif;background: linear-gradient(to right, #f32170, #ff6b08, #cf23cf);-webkit-text-fill-color: transparent;-webkit-background-clip: text;        }
+                        .registration{width:230px;height:30px;padding:5px 5px 5px 5px;border-radius:5px;margin-top:-50px;margin-left:1050px;background-image: linear-gradient(55deg, #F97794 10%, #ABDCFF 100%);position:absolute;font-size:20px;}
+
+        #logo{background-image: linear-gradient(190deg, #ABDCFF 50%, #0396FF 100%);width:1305px;text-align:center;border-radius:5px;}
+        #departments{width:905;background-image: linear-gradient(190deg, #ABDCFF 50%, #86FDE8 100%);margin-top:3px;overflow-x:scroll;display:inline-block;border-radius:5px;}
+        #departments ul{border-radius:5px;width:1500;height:145px;margin-top:-160px;padding-top:5px;padding-bottom:5px;position: relative;animation: mymove 15s infinite;}
+        #departments ul li{height:150px;width:140px;border:1px solid #86FDE8;text-align:center;border-radius:5px;display:inline-block;font-size:30px;padding-top:40px;margin-top:5px;margin-left:0px;}
+        #departments  ul li img{height:110px;width:140px;border-radius:5px;display:inline-block;font-size:20px;padding-top:0px;margin-top:-40px;background:white}
+        #departments ul li div{height:40px;width:140px;border:1px solid #86FDE8;font-size:25px;text-align:center;margin-top:0px;border-radius:5px;padding-top:10px;background:white;}
+        #clubs{width:905;background-image: linear-gradient(190deg, #ABDCFF 50%, #86FDE8 100%);margin-top:3px;overflow-x:scroll;display:inline-block;border-radius:5px;}
+        #clubs ul{border-radius:5px;width:1500px;height:145px;margin-top:-100px;padding-top:5px;padding-bottom:5px;position: relative;animation: mymove 15s infinite;}
+        #clubs  ul li{height:150px;width:140px;border:1px solid #86FDE8;text-align:center;border-radius:5px;display:inline-block;font-size:20px;padding-top:40px;margin-top:5px;}
+        #clubs  ul li img{height:110px;width:140px;border-radius:5px;display:inline-block;font-size:20px;padding-top:0px;margin-top:-40px;background:white}
+        #clubs ul li div{height:40px;width:140px;border:1px solid #86FDE8 ;font-size:20px;text-align:center;margin-top:0px;border-radius:5px;padding-top:5px;background:white;position:relative}
+        #updateheading{font-size:25px;height:40px;margin-top:-370px;width:397px;position:absolute;margin-left:909;padding-top:7px;border-radius:5px;background-image: linear-gradient(50deg, #F97794 50%, #ABDCFF 100%);text-align:center}
+        #updates{background-image: linear-gradient(50deg, #81FFEF 20%, #ABDCFF 80%);position:absolute;width:397px;margin-left:909;margin-top:-328px;height:327px;border-radius:5px;overflow:scroll}
+        #procon{width:433px;height:230px;background-image: linear-gradient(190deg, #ABDCFF 50%, #86FDE8 100%);margin-top:2px;border-radius:5px;position:absolute;}
+        #procon img{width:428px;height:200px;border-radius:5px;padding:5px 0px 5px 5px}
+        #procon1{width:433px;height:230px;background-image: linear-gradient(190deg, #ABDCFF 50%, #86FDE8 100%);margin-top:2px;border-radius:5px;margin-left:436px;position:absolute;}
+        #procon1 img{width:428px;height:200px;border-radius:5px;padding:5px 0px 5px 5px}
+        #procon2{width:433px;height:230px;background-image: linear-gradient(190deg, #ABDCFF 50%, #86FDE8 100%);margin-top:2px;border-radius:5px;margin-left:870px;}
+        #procon2 img{width:428px;height:200px;border-radius:5px;padding:5px 0px 5px 5px}
+
+
+        
+        .clubs::-webkit-scrollbar{width:0px;}
+        .clubs {overflow-x: hidden;}
+        .departments::-webkit-scrollbar{width:0px;}
+        .departments {overflow-x: hidden;}
+        #updates::-webkit-scrollbar{width:1px;}
+        #updates { overflow-x: hidden;}
+        body::-webkit-scrollbar{width:1px;}
+        body { overflow-x: hidden;}
+
+          @keyframes mymove {
+            from {right: 0px;}
+            to {right: 600px;}
+          }
+        .loginin{font-family: "Roboto", sans-serif;position: relative;z-index: 1;background-image: linear-gradient(190deg,  #ABDCFF 50%, #86FDE8 100%);;opacity: 99%;max-width: 330px;margin: 200px auto 100px;padding: 10px 45px 30px 45px;text-align: center;box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);border-radius: 10px;margin-top:-1100px;}
+        .login p{font-size: 20px;padding: 1px;text-align: center;}
+        .login input{outline: 0;border-radius: 10px;background: #F2F2F2;width: 100%;border: 0;margin: 0 0 15px;padding: 15px;box-sizing: border-box;font-size: 14px;}
+        .login input:hover{background-color: #D3F8F9;transition: all 1s ease 0s;}
+        .login input:focus{background-color: #D3F8F9;transition: all 1s ease 0s;}
+        .login button{text-transform: uppercase;outline: 0;border-radius: 10px;background-image: linear-gradient(55deg, #F97794 10%, #ABDCFF 100%);;width: 240px;border: 0;padding: 15px;color: #FFFFFF;font-size: 14px;cursor: pointer;}
+        .login button:hover, .form button:active, .form button:focus{background-color: #D3F8F9;transition: all 1s ease 0s;}
+        .login .message{margin: 15px 0 0;color: #F97794;font-size: 12px;}
+        .login .message span{color: black;text-decoration: none;}
+        .signinin{font-family: "Roboto", sans-serif;position: relative;z-index: 1;background-image: linear-gradient(190deg,  #ABDCFF 50%, #86FDE8 100%);;opacity: 99%;max-width: 800px;margin: 200px auto 100px;padding: 10px 45px 30px 15px;text-align: center;box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);border-radius: 10px;dispaly:inline-flex;margin-top:-1100px}
+        .signin p{font-size: 20px;padding: 1px;text-align: center;}
+        .signin input{outline: 0;border-radius: 10px;background: #F2F2F2;width: 330px;border: 0;margin: 0 0 15px;padding: 15px;box-sizing: border-box;font-size: 14px;}
+        .signin select{outline: 0;border-radius: 10px;background: #F2F2F2;width: 330px;border: 0;margin: 0 0 15px;padding: 15px;box-sizing: border-box;font-size: 14px;}
+
+        .signin input:hover{background-color: #D3F8F9;transition: all 1s ease 0s;}
+        .signin input:focus{background-color: #D3F8F9;transition: all 1s ease 0s;}
+        .signin button{text-transform: uppercase;outline: 0;border-radius: 10px;background-image: linear-gradient(55deg, #F97794 10%, #ABDCFF 100%);;width: 240px;border: 0;padding: 15px;color: #FFFFFF;font-size: 14px;cursor: pointer;margin-left:-150px;}
+        .signin button:hover, .form button:active, .form button:focus{background-color: #D3F8F9;transition: all 1s ease 0s;}
+        .signin .messagesignin{margin: 15px 0 0;color: #F97794;font-size: 12px;margin-left:330px;margin-top:-30px;}
+        .signin .messagesignin span{color: black;text-decoration: none;}
+        .sininsend{width:75px;background-image: linear-gradient(55deg, #F97794 10%, #ABDCFF 100%);height:45px;padding-top:15px;border-radius:10px;margin-top:-60px;margin-bottom:20px;margin-left:290px;position:absolute;}
+        .sininver{width:75px;background-image: linear-gradient(55deg, #F97794 10%, #ABDCFF 100%);height:45px;padding-top:15px;border-radius:10px;margin-top:-60px;margin-bottom:20px;margin-left:630px;position:absolute;}
+        .signin{display:none;}
+        .forgetin{font-family: "Roboto", sans-serif;position: relative;z-index: 1;background-image: linear-gradient(190deg,  #ABDCFF 50%, #86FDE8 100%);;opacity: 99%;max-width: 430px;margin: 200px auto 100px;padding: 10px 45px 30px 45px;text-align: center;box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);border-radius: 10px;margin-top:-1100px;}
+        .forget p{font-size: 20px;padding: 1px;text-align: center;}
+        .forget input{outline: 0;border-radius: 10px;background: #F2F2F2;width: 100%;border: 0;margin: 0 0 15px;padding: 15px;box-sizing: border-box;font-size: 14px;}
+        .forget input:hover{background-color: #D3F8F9;transition: all 1s ease 0s;}
+        .forget input:focus{background-color: #D3F8F9;transition: all 1s ease 0s;}
+        .forget button{text-transform: uppercase;outline: 0;border-radius: 10px;background-image: linear-gradient(55deg, #F97794 10%, #ABDCFF 100%);;width: 240px;border: 0;padding: 15px;color: #FFFFFF;font-size: 14px;cursor: pointer;}
+        .forget button:hover, .form button:active, .form button:focus{background-color: #D3F8F9;transition: all 1s ease 0s;}
+        .forget .messageforget{margin: 15px 0 0;color: #F97794;font-size: 12px;}
+        .forget .messageforget span{color: black;text-decoration: none;}        
+        .forgetsend{width:75px;background-image: linear-gradient(55deg, #F97794 10%, #ABDCFF 100%);height:45px;padding-top:15px;border-radius:10px;margin-top:-60px;margin-bottom:20px;margin-left:260px;position:absolute;}
+        .forgetver{width:75px;background-image: linear-gradient(55deg, #F97794 10%, #ABDCFF 100%);height:45px;padding-top:15px;border-radius:10px;margin-top:-60px;margin-bottom:20px;margin-left:260px;position:absolute;}
+        .forget{display:none;}
+        
+        </style>
+
+<body>
+    <div id="left-bar">
+        {% csrf_token %}
+        <div id="left-bar">
+            <a href="/profile{{para}}"><div id="pic">
+               <img src="{{profile_img}}">
+           </div>
+           <div id="name">{{name}}</div></a>
+           <ul>
+               <a href="/{{para1}}"><li>Home</li></a>
+               <a href="/about{{para}}"><li>About</li></a>
+               <a href="/departments{{para}}"><li>Departments</li></a>
+               <a href="/clubs{{para}}"><li>Clubs</li></a>
+               <a href="/trainingandplacement{{para}}" ><li style="font-size:15px;">Training placement</li></a>
+                <a href="/{{log.0}}"><li>{{log.1}}</li></a>
+           </ul>
+           
+       </div>
+       <div id="middle">
+           <div id="logo">
+               <img src="/static/Gates.png" >
+               <div style=" font-size:20px;margin-left:1010px;margin-top:-89px;padding-bottom:15px;padding-top:5px;text-align:left">Contacts:<br>
+                   Email:vaddeadarsh150@gmail.com<br>
+                   Phone:8328267589
+               </div>
+           </div>
+           <div id="heading">
+               <header>
+               <h4>Welcome To <br>GATES Institute Of Technology</h4>
+               </header>
+           </div>
+           <div id="departments" class="departments">
+
+               <h4 style="transform:rotate(270deg);font-size:25px;width:100px;margin-left:-33px;margin-top:100px;">Departments</h4>
+               <ul>
+                   <a href="/datascience{{para}}"><li><img src="/static/ds.jpeg"><div> DS </div></li></a>
+                   <a href="/cai{{para}}"><li><img src="/static/ai.jpeg"><div>AI </div></li></a>
+                   <a href="/cse{{para}}"><li><img src="/static/cse.jpeg"><div>CSE </div></li></a>
+                   <a href="/cs{{para}}"><li><img src="/static/cs.jpeg"><div>CS </div></li></a>
+                   <a href="/ece{{para}}"><li><img src="/static/ece.jpeg"><div>ECE </div></li></a>
+                   <a href="/mech{{para}}"><li><img src="/static/me.jpeg"><div>MECH </div></li></a>
+                   <a href="/ce{{para}}"><li><img src="/static/ce.jpeg"><div>CE </div></li></a>
+                   <a href="/eee{{para}}"><li><img src="/static/eee.jpg"><div>EEE </div></li></a>
+                   <a href="/mba{{para}}"><li><img src="/static/mba.png"><div>MBA </div></li></a>
+                   <a href="/mca{{para}}"><li><img src="/static/mca.jpeg"><div>MCA </div></li></a>
+               </ul>
+
+           </div>
+
+           <div id="clubs" class="clubs">
+               <h4 style="transform:rotate(270deg);font-size:25px;width:100px;margin-left:-33px;margin-top:50px;">Clubs</h4>
+
+               <ul>
+               <a href="/pythonclub"><li><img src="/static/Pp0.jpg"><div>Python Club</div></li></a>
+               <a href="/codingclub"><li><img src="/static/Coding club.png"><div>Codeing Club</div></li></a>
+               <a href="/campus"><li><img src="/static/cr.jpg"><div>Campus Radio</div></li></a>
+               <a href="/graphicclub"><li><img src="/static/GDC LOGO.jpg"><div>Graphic Club</div></li></a>
+               <a href="/ideaclub"><li><img src="/static/idea.jpg"><div>Idea Club</div></li></a>
+               <a href="/literacyclub"><li><img src="/static/Screenshot_20230310-131148_WhatsApp.jpg"><div>Literacy Club</div></li></a>
+               <a href="/projectclub"><li><img src="/static/pclub.jpg"><div>Project Club</div></li></a>
+               <a href="/speakingclub"><li><img src="/static/spe.jpeg"><div>Speaking Club</div></li></a>
+               <a href="/innerwheelclub"><li><img src="/static/iweel.jpeg"><div>Innerwheel Club</div></li></a>
+               <a href="/euphoriaclub"><li><img src="/static/cultural-club-euphoria-2-1024x496.png"><div>Euphoria Club</div></li></a>
+               </ul>
+           </div>
+           <div id="updateheading">Updates</div>
+
+               <div id="updates">
+                                       <div style="padding-left:20px;margin-top:15px;"> jityrefgythujiokilkujyhtgrfed <span style="color:#F97794;">Click </span></div>
+                                       <div style="padding-left:20px;margin-top:15px;"> jityrefgythujiokilkujyhtgrfed <span style="color:#F97794;">Click </span></div>
+                                       <div style="padding-left:20px;margin-top:15px;"> jityrefgythujiokilkujyhtgrfed <span style="color:#F97794;">Click </span></div>
+                                       <div style="padding-left:20px;margin-top:15px;"> jityrefgythujiokilkujyhtgrfed <span style="color:#F97794;">Click </span></div>
+                                       <div style="padding-left:20px;margin-top:15px;"> jityrefgythujiokilkujyhtgrfed <span style="color:#F97794;">Click </span></div>
+
+
+
+               </div>
+           <div id="procon">
+               <img src="/static/venu1.jpg">
+               <div style="text-align:center;padding:5px 5px 5px 5px;background:white;width:425px;margin-left:5px;margin-top:-2px;border-radius:5px;">Main Block </div>
+           </div>
+           <div id="procon1">
+               <img src="/static/graphic 3.jpg">
+               <div style="text-align:center;padding:5px 5px 5px 5px;background:white;width:425px;margin-left:5px;margin-top:-2px;border-radius:5px;">Training and Placements cell </div>
+           </div>
+           <div id="procon2">
+               <img src="/static/vksr.jpeg">
+               <div style="text-align:center;padding:5px 5px 5px 5px;background:white;width:425px;margin-left:5px;margin-top:-2px;border-radius:5px;">MBA Block</div>
+           </div>
+    <div class="login" id="login">
+    <div class="loginin">
+        <p>Login</p>
+        <form method='post' action="/login">{% csrf_token %}
+        <input type="text" name="logrollnumber" id="logrollnumber" placeholder="Roll Number" required>
+        <input type="password" name="logpassword" id="logpassword" placeholder="password" required>
+        <button >login</button>
+        </form>
+        <p class="message">Not registered? <span onclick="signin()">Create an account</span>  <br><br>  <span onclick="forget()">Forgot Password</span></p>
+    </div>
+    </div>
+    <div class="signin"  id="signin">
+        <div class="signinin">
+            <p>SignUp</p>
+            <span id="firstname"></span>
+            <input type="text" name="firstname" placeholder="First Name" id="firstnameinput" required>
+            <span id="lastname"></span>
+            <input type="text" name="lastname" placeholder="Last Name" id="lastnameinput" required>
+            <br><span id="signemail"></span>
+            <input type="email" name="signemail" placeholder="Email" id="signemailinput"  required style="width:255px;margin-left:-75px;"><div class="sininsend" id="sininsend" onclick="signinsend()">Send</div>
+            <span id="signinotp"></span>
+            <input type="text" name="signinotp" placeholder="OTP"  id="signotpinput" required style="width:255px;margin-left:83px;"><div class="sininver" id="sininver" onclick="signinotpver()">verify</div>
+            <br><span id="rollnumber"></span>
+            <input type="text" name="rollnumber" placeholder="Roll Number" id="rollnumberinput" required>
+            <span id="department"></span>
+            <select id="departmentts" name="department" >
+                <option  value='None'selected>--Select Department--</option>
+                <option value="Data Science">Data Science</option>
+                <option value="Artificial Intelligence">Artificial Intelligence</option>
+                <option value="Computer Science and Engineering">Computer Science and Engineering</option>
+                <option value="Cyber Security">Cyber Security</option>
+                <option value=" Civil Engineering"> Civil Engineering </option>
+                <option value="Mechanical Engineering"> Mechanical Engineering</option>
+                <option value="Electronics and Communications Engineering">Electronics and Communications Engineering</option>
+                <option value="Electrical and Electronics Engineering">Electrical and Electronics Engineering</option>
+                <option value="Master of Business Administration"> Master of Business Administration</option>
+                <option value="Master of Computer Applications"> Master of Computer Applications</option>
+              </select>            
+              <br><span id="password"></span>
+            <input type="password" name="password" id="passwordinput"  placeholder="password" required>
+            <span id="conformpassword"></span>
+            <input type="password" name="conformpassword" id="conformpasswordinput" oninput="conforminput()" placeholder="Conform password" required>
+            <button onclick="signinbut()">SignUp</button>
+            <p class="messagesignin">Registered? <span onclick="login()">Login</span>  |  <span onclick="forget()">Forgot Password</span></p>
+        </div>
+        </div>
+        <div class="forget" id="forget">
+            <div class="forgetin">
+                <p>Forget Passsword</p>
+                <form method='post' action="/forget">{% csrf_token %}
+
+                <input type="email" name="forgetemail" placeholder="Email" style="width:260px;margin-left:-85px;"><div class="forgetsend" id="forgetsend"onclick="forgetsend()">Send</div>
+                <input type="text" name="forgetotp" placeholder="OTP" style="width:255px;margin-left:-83px;"><div class="forgetver" id="forgetver" onclick="forgetotpver()">verify</div>
+                <span id="forgetpassword"></span>
+                <input type="password" name="password" id="forgetpasswordinput"  placeholder="password" required>
+                <span id="forgetconformpassword"></span>
+                <input type="password" name="forgetconformpassword" id="forgetconformpasswordinput" oninput="forgetconforminput()" placeholder="Conform password" required>
+
+                <button>forget passsword</button>
+                </form>
+                <p class="messageforget">Not registered? <span onclick="signin()">Create an account</span>  <br><br>  <span onclick="login()">Login</span></p>
+            </div>
+            </div>
+        </div>
+        
+        
+</body>
+<script>
+    function login(){
+        try{document.getElementById('login').style="display:block;"}catch{}
+        try{document.getElementById('signin').style="display:none;"}catch{}
+        try{document.getElementById('forget').style="display:none;"}catch{}
+    }
+    function signin(){
+        try{document.getElementById('signin').style="display:block;"}catch{}
+        try{document.getElementById('login').style="display:none;"}catch{}
+        try{document.getElementById('forget').style="display:none;"}catch{}
+
+    }
+    function forget(){
+        try{document.getElementById('forget').style="display:block;"}catch{}
+        try{document.getElementById('login').style="display:none;"}catch{}
+        try{document.getElementById('signin').style="display:none;"}catch{}
+
+    }
+    function loginbut(){
+        var formData = new FormData();
+        csrf_token = $('input[name="csrfmiddlewaretoken"]').val();
+        formData.append("csrfmiddlewaretoken", csrf_token);
+        formData.append("rollnumber", $('input[name="logrollnumber"]').val());
+        formData.append("password", $('input[name="logpassword"]').val());
+
+        $.ajax({
+        type:'POST',
+        url:"/login",
+        processData: false,
+        contentType : false,
+        data:formData,
+          success: function (data) {
+    
+          }
+        })
+        }
+         function conforminput(){
+            if(document.getElementById('passwordinput').value==document.getElementById('conformpasswordinput').value){
+            document.getElementById('conformpassword').innerHTML="Mached"
+            document.getElementById('conformpassword').style="margin-top:-15px;color:green;margin-left:-0px;position:absolute;font-size:10px;"
+            document.getElementById('conformpasswordinput').style="border:1px solid green"
+
+            }
+            else{
+                document.getElementById('conformpassword').innerHTML=" Not Mached"
+                document.getElementById('conformpassword').style="margin-top:-15px;color:red;margin-left:-0px;position:absolute;font-size:10px;"
+                document.getElementById('conformpasswordinput').style="border:1px solid red"
+
+
+            }
+
+         }
+         function forgetconforminput(){
+            if(document.getElementById('forgetconformpasswordinput').value==document.getElementById('forgetpasswordinput').value){
+            document.getElementById('forgetconformpassword').innerHTML="Mached"
+            document.getElementById('forgetconformpassword').style="margin-top:-15px;color:green;margin-left:-0px;position:absolute;font-size:10px;"
+            document.getElementById('forgetconformpasswordinput').style="border:1px solid green"
+
+            }
+            else{
+                document.getElementById('forgetconformpassword').innerHTML=" Not Mached"
+                document.getElementById('forgetconformpassword').style="margin-top:-15px;color:red;margin-left:-0px;position:absolute;font-size:10px;"
+                document.getElementById('forgetconformpasswordinput').style="border:1px solid red"
+
+
+            }
+
+         }
+        function signinbut(){
+            var formData = new FormData();
+            csrf_token = $('input[name="csrfmiddlewaretoken"]').val();
+            formData.append("csrfmiddlewaretoken", csrf_token);
+            if ($('input[name="firstname"]').val()!=''){
+                document.getElementById('firstnameinput').style="border: transparent"
+                document.getElementById('firstname').innerHTML=""
+                formData.append("firstname", $('input[name="firstname"]').val());
+                if ($('input[name="lastname"]').val()!=''){
+                    document.getElementById('lastname').innerHTML=""
+                    document.getElementById('lastnameinput').style="border: transparent"
+                    formData.append("lastname", $('input[name="lastname"]').val());
+                    if ($('input[name="signemail"]').val()!=''){
+                            document.getElementById('signemail').innerHTML=""
+                            document.getElementById('signemailinput').style="border: transparent;width:255px;margin-left:-75px;"
+                            formData.append("email", $('input[name="signemail"]').val());
+                            if ($('input[name="signinotp"]').val()!=''){
+                                document.getElementById('signinotp').innerHTML=""
+                                document.getElementById('signotpinput').style="border: transparent"
+                                formData.append("otp", $('input[name="signinotp"]').val());
+                                if ($('input[name="rollnumber"]').val()!=''){
+                                    document.getElementById('rollnumber').innerHTML=""
+                                    document.getElementById('rollnumberinput').style="border: transparent"
+                                    formData.append("rollnumber", $('input[name="rollnumber"]').val());
+                                        formData.append("department",  document.getElementById('departmentts').value);
+                                        console.log(document.getElementById('passwordinput').value)
+                                        if (document.getElementById('passwordinput').value!=''){
+                                            document.getElementById('password').innerHTML=""
+                                            document.getElementById('passwordinput').style="border: transparent"
+                
+                                            formData.append("password", $('input[name="password"]').val());
+                                            $.ajax({
+                                                type:'POST',
+                                                url:"/signin",
+                                                processData: false,
+                                                contentType : false,
+                                                data:formData,
+                                                  success: function (data) {
+                                            
+                                                  }
+                                                })
+                                        }
+                                        else{   
+                                            document.getElementById('password').style="margin-top:-15px;color:red;margin-left:-0px;position:absolute;font-size:10px;margin-left:80px;"             
+                                            document.getElementById('password').innerHTML="password is required"
+                                            document.getElementById('passwordinput').style="border:1px solid red"
+                                        }
+
+                                    
+
+                                }
+                                else{   
+                                    document.getElementById('rollnumber').style="margin-top:-15px;color:red;margin-left:-0px;position:absolute;font-size:10px;margin-left:80px;"             
+                                    document.getElementById('rollnumber').innerHTML="rollnumber is required"
+                                    document.getElementById('rollnumberinput').style="border:1px solid red"
+                                }
+
+                            }
+                            else{   
+                                document.getElementById('signinotp').style="margin-top:-15px;color:red;margin-left:-0px;position:absolute;font-size:10px;margin-left:80px;"             
+                                document.getElementById('signinotp').innerHTML="OTP is required"
+                                document.getElementById('signinotpinput').style="border:1px solid red"
+                            }
+                            }
+                            else{   
+                                document.getElementById('signemail').style="margin-top:-15px;color:red;margin-left:-0px;position:absolute;font-size:10px;margin-left:-75px;"             
+                                document.getElementById('signemail').innerHTML="Email is required"
+                                document.getElementById('signemailinput').style="border:1px solid red;width:255px;margin-left:-75px;"
+                            }
+                            }
+                            else{   
+                                document.getElementById('lastname').style="margin-top:-15px;color:red;margin-left:-0px;position:absolute;font-size:10px;"             
+                                document.getElementById('lastname').innerHTML="Last Name is required"
+                                document.getElementById('lastnameinput').style="border:1px solid red"
+                            }
+                            }
+                            else{   
+                                document.getElementById('firstname').style="margin-top:-15px;color:red;margin-left:-0px;position:absolute;font-size:10px;"             
+                                document.getElementById('firstname').innerHTML="First Name is required"
+                                document.getElementById('firstnameinput').style="border:1px solid red"
+                            }
+            
+            }
+    function signinsend(){
+    var formData = new FormData();
+    csrf_token = $('input[name="csrfmiddlewaretoken"]').val();
+    formData.append("csrfmiddlewaretoken", csrf_token);
+    if ($('input[name="firstname"]').val()!=''){
+        document.getElementById('firstnameinput').style="border: transparent"
+        document.getElementById('firstname').innerHTML=""
+        formData.append("firstname", $('input[name="firstname"]').val());
+        if ($('input[name="lastname"]').val()!=''){
+            document.getElementById('lastname').innerHTML=""
+            document.getElementById('lastnameinput').style="border: transparent"
+            formData.append("lastname", $('input[name="lastname"]').val());
+            if ($('input[name="signemail"]').val()!=''){
+                document.getElementById('signemail').innerHTML=""
+                document.getElementById('signemailinput').style="border:transparent;width:255px;margin-left:-75px;"
+                formData.append("email", $('input[name="signemail"]').val());
+    $.ajax({
+    type:'POST',
+    url:"/signsendemail",
+    processData: false,
+    contentType : false,
+    data:formData,
+      success: function (data) {
+        console.log(data)
+        document.getElementById('sininsend').innerHTML=data
+
+      }
+    })
+    }
+    else{   
+        document.getElementById('signemail').style="margin-top:-15px;color:red;margin-left:-0px;position:absolute;font-size:10px;margin-left:-75px;"             
+        document.getElementById('signemail').innerHTML="Email is required"
+        document.getElementById('signemailinput').style="border:1px solid red;width:255px;margin-left:-75px;"
+    }
+    }
+    else{   
+        document.getElementById('lastname').style="margin-top:-15px;color:red;margin-left:-0px;position:absolute;font-size:10px;"             
+        document.getElementById('lastname').innerHTML="Last Name is required"
+        document.getElementById('lastnameinput').style="border:1px solid red"
+    }
+    }
+    else{   
+        document.getElementById('firstname').style="margin-top:-15px;color:red;margin-left:-0px;position:absolute;font-size:10px;"             
+        document.getElementById('firstname').innerHTML="First Name is required"
+        document.getElementById('firstnameinput').style="border:1px solid red"
+    }
+    }
+    function signinotpver(){
+        var formData = new FormData();
+        csrf_token = $('input[name="csrfmiddlewaretoken"]').val();
+        formData.append("csrfmiddlewaretoken", csrf_token);
+        
+        formData.append("email", $('input[name="signemail"]').val());
+        if ($('input[name="signinotp"]').val()!=''){
+            document.getElementById('signinotp').innerHTML=""
+            document.getElementById('signotpinput').style="border: transparent;width:255px;margin-left:83px;"
+
+        formData.append("otp", $('input[name="signinotp"]').val());
+        $.ajax({
+        type:'POST',
+        url:"/signinotpver",
+        processData: false,
+        contentType : false,
+        data:formData,
+          success: function (data) {
+            document.getElementById('sininver').innerHTML=data
+
+    
+          }
+        })
+        }
+        else{   
+            document.getElementById('signinotp').style="margin-top:-15px;color:red;margin-left:-0px;position:absolute;font-size:10px;margin-left:80px;"             
+            document.getElementById('signinotp').innerHTML="OTP is required"
+            document.getElementById('signinotpinput').style="border:1px solid red;"
+        }
+        }
+    
+    function forgetsend(){
+            var formData = new FormData();
+            csrf_token = $('input[name="csrfmiddlewaretoken"]').val();
+            formData.append("csrfmiddlewaretoken", csrf_token);
+            formData.append("email", $('input[name="forgetemail"]').val());
+            $.ajax({
+            type:'POST',
+            url:"/forgetsendemail",
+            processData: false,
+            contentType : false,
+            data:formData,
+              success: function (data) {
+                document.getElementById('forgetsend').innerHTML=data
+
+        
+              }
+            })
+            }
+    function forgetotpver(){
+                var formData = new FormData();
+                csrf_token = $('input[name="csrfmiddlewaretoken"]').val();
+                formData.append("csrfmiddlewaretoken", csrf_token);
+                formData.append("email", $('input[name="forgetemail"]').val());
+                formData.append("otp", $('input[name="forgetotp"]').val());
+                $.ajax({
+                type:'POST',
+                url:"/forgetotpver",
+                processData: false,
+                contentType : false,
+                data:formData,
+                  success: function (data) {
+                    document.getElementById('forgetver').innerHTML=data
+            
+                  }
+                })
+                }
+</script>
+</html>
+      

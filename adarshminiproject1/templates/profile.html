@@ -1,0 +1,201 @@
+<html>
+        <head>
+            <title>GIT</title>
+        </head>
+        <script src="https://code.jquery.com/jquery-3.5.1.js"integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc="crossorigin="anonymous"></script>
+
+    <style>
+        * {
+            box-sizing: border-box;
+          }
+a{text-decoration:none;color:black}
+        li{list-style:none}          input:focus{background-color: #D3F8F9;transition: all 1s ease 0s;border: 1px solid transparent;outline: 0;}          #left-bar{width:160px;background-image: linear-gradient(135deg, #ABDCFF 10%, #0396FF 100%);height:1400px;position:fixed;margin-top:-30px;}
+        #left-bar ul{margin-left:-35px;margin-top:100px;position:fixed;}
+        #left-bar li{list-style: none;width:140px;border-radius:30px;margin-top:20px;background-image: linear-gradient(135deg, #E3FDF5 10%, #FFE6FA 100%);font-size:20px;padding:5px 5px 5px 15px;border:1px solid transparent;}
+        #left-bar li:hover{background-image: linear-gradient(55deg, #F97794 10%, #ABDCFF 100%);}
+        #pic{height:100px;width:100px;border-radius:50px;margin-left:30px;margin-top:80px;}
+        #pic img{height:100px;width:100px;border-radius:50px;}
+        #name{margin-left:5px;width:150px;text-align:center;margin-top:15px;padding-top:7px;border-radius:5px;background:white;}
+        #logo{position:fixed;background-image: linear-gradient(190deg, #ABDCFF 50%, #0396FF 100%);width:1305px;text-align:center;border-radius:5px;margin-left:165px;margin-top:-7px;}
+        #profile{background-image: linear-gradient(190deg, #ABDCFF 50%, #86FDE8 100%);height:900px;width:560px;padding:5px 5px 5px 5px;border-radius:5px;margin-top:95px;position:fixed;margin-left:165px;}
+        #profile img{width:550px;height:400px;border-radius:5px;}
+        #picc{width:100px;height:100px ;border-radius:80px;margin-left:40px;position:absolute;margin-top:-150px;}
+        #picc img{width:100px;height:100px ;border:2px solid #86FDE8;border-radius:80px;}
+        #namee{width:150px;padding:5px 5px 5px 5px;text-align:center;margin-top:-35px;margin-left:20px;background:white;position:absolute;border-radius:5px;}
+        #rollno{width:550px;height:50px;background:white;padding:15px 5px 5px 5px;margin-top:10px;border-radius:5px;}
+        #department{width:550px;height:50px;background:white;padding:15px 5px 5px 5px;margin-top:5px;border-radius:5px;}
+        #email{width:550px;height:50px;background:white;padding:15px 5px 5px 5px;margin-top:5px;border-radius:5px;}
+        #totacc{width:550px;height:50px;background:white;padding:15px 5px 5px 5px;margin-top:5px;border-radius:5px;}
+        #mi{position:fixed;margin-top:95px;overflow-x:scroll;border-radius:5px;padding:15px 5px 5px 5px;height:650px;width:740px;background-image: linear-gradient(190deg, #ABDCFF 50%, #86FDE8 100%);margin-left:730px;}
+        #mid{margin-top:-7px;border-radius:5px;padding:15px 5px 5px 5px;display:inline-flex;background:;}
+        #date {margin-left:10px;text-align:center;width:100px;border-radius:5px;border:1px solid gray;}
+        #activity {margin-left:1px;text-align:center;width:500px;border-radius:5px;border:1px solid gray;}
+        #score {margin-left:1px;width:100px;text-align:center;border-radius:5px;border:1px solid gray;}
+        #pro{ box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);display:none;position:fixed;margin-left:-200px; background-image: linear-gradient(190deg, #ABDCFF 50%, #86FDE8 100%);width:600px;height:400px;border-radius:5px;margin-top:-120px;          opacity: 99%;        }
+        #pro img{height:400px;width:600px;border-radius:5px; padding:5px 5px 5px 5px; }
+        #propic img{width:110px;height:110px ;border-radius:80px;margin-left:40px;position:absolute;margin-top:-150px;}
+        .ad{font-size:30px;background:white;width:30px;height:30px;position:absolute;margin-top:-70px;margin-left:120px;border-radius:50px;text-align:center;}
+        .adc{font-size:20px;background:white;width:150px;height:30px;position:absolute;margin-top:-40px;margin-left:420px;border-radius:5px;text-align:center;padding-top:5px;}
+        .cancle{font-size:30px;transform:rotate(45deg);background:white;width:30px;height:30px;position:absolute;margin-top:-390px;margin-left:560px;border-radius:50px;text-align:center;}
+        #covercancle{background-image: linear-gradient(55deg, #F97794 10%, #ABDCFF 100%);display:none;width:80px;height:30px;position:absolute;margin-top:-39px;margin-left:470px;padding-top:5px;border-radius:5px;text-align:center;}
+        #coversave{background-image: linear-gradient(55deg, #F97794 10%, #ABDCFF 100%);display:none;width:80px;height:30px;position:absolute;margin-top:-39px;margin-left:380px;padding-top:5px;border-radius:5px;text-align:center;}
+        #procancle{background-image: linear-gradient(55deg, #F97794 10%, #ABDCFF 100%);display:none;width:80px;height:30px;position:absolute;margin-top:-39px;margin-left:270px;padding-top:5px;border-radius:5px;text-align:center;}
+        #prosave{background-image: linear-gradient(55deg, #F97794 10%, #ABDCFF 100%);display:none;width:80px;height:30px;position:absolute;margin-top:-39px;margin-left:180px;padding-top:5px;border-radius:5px;text-align:center;}
+
+        #mi::-webkit-scrollbar{width:1px;}
+        #mi { overflow-x: hidden;}
+    </style>
+    <body>
+        <div id="left-bar">
+            <a href="/profile{{para}}"><div id="pic">
+                <img src="{{profile_img}}">
+            </div>
+            <div id="name">{{name}}</div></a>
+            <ul>
+                <a href="/{{para1}}"><li>Home</li></a>
+                <a href="/about{{para}}"><li>About</li></a>
+                <a href="/departments{{para}}"><li>Departments</li></a>
+                <a href="/clubs{{para}}"><li>Clubs</li></a>
+                <a href="/trainingandplacement{{para}}" ><li style="font-size:15px;">Training placement</li></a>
+                 <a href="/{{log.0}}"><li>{{log.1}}</li></a>
+            </ul>
+        </div>
+        <div id="logo">
+            <img src="/static/Gates.png" >
+        </div>
+    <div id="profile">
+        <img src="{{cover_pic}}">
+        <div id="picc" onclick="profile()">
+            <img src="{{profile_img}}">
+        </div>
+        <div id="namee">{{name}}</div>
+        <div id="rollno">Roll Number: {{rollno}}</div>
+        <div id="department">Department: {{department}}</div>
+        <div id="email">Email: {{email}}</div>
+        <div id="totacc">Total Activites: {{total}}</div>
+
+    </div>
+    <div id="mi">
+
+        <div id="mid">
+            <div id="date">
+                Date<hr><br> {% for j in quiz %}
+                {{j.date}}<br><br>
+                {% endfor %}
+             </div>
+             <div id="activity">
+             Activity<hr><br>
+             {% for j in quiz %}
+             <a href="/quizresult{{para}}/{{j.title}}">{{j.title}}</a><br><br>
+             {% endfor %}
+             </div>
+             <div id="score">
+                 Score<hr><br> {% for j in quiz %}
+                 {{j.score}}<br><br>
+                 {% endfor %}   
+             </div>
+        
+    </div>
+<div id="pro">
+    {% csrf_token %}
+    <img src="{{cover_pic}}" id="coverpic">
+    <div id="coversave" onclick="addcover()">save</div>
+    <div id="covercancle" onclick="canclecover()">cancle</div>
+    <div id="prosave" onclick="addprofile()">save</div>
+    <div id="procancle" onclick="canclepro()">cancle</div>
+
+    <div for="cancle" class="cancle" onclick="profilehide()">+</div>
+    <div id="propic">
+        <img src="{{profile_img}}" id="profilepic">
+        <label for="adc" class="adc" id="abcd">Add Cover Pic</label>
+        <input type="file" id="adc" name="procov" onchange="coveradd()"  style="display:none;">
+    </div> 
+    <label for="ad" class="ad">+</label>
+    <input type="file" id="ad" name="pro" onchange="profileadd()"style="display:none;">
+    <div id="namee">{{name}}</div>
+</div>  
+{% include 'speech.html'%}
+<style>
+    #mic{margin-top:600px;}
+</style>
+    </body>
+    <script>
+        function profile(){
+            document.getElementById('pro').style="display:block;"
+
+        }
+        function profilehide(){
+            document.getElementById('pro').style="display:none;"
+
+        }
+        
+        
+        function profileadd(){
+        var image = document.getElementById('profilepic');
+        fileName=event.target.files[0]
+        fileName=fileName.name;
+        size=event.target.files[0].size;
+        image.src= URL.createObjectURL(event.target.files[0]);
+        document.getElementById('procancle').style="display:block"
+        document.getElementById('prosave').style="display:block"
+
+        }
+        function coveradd(){
+            var image = document.getElementById('coverpic');
+            fileName=event.target.files[0]
+            fileName=fileName.name;
+            size=event.target.files[0].size;
+            image.src= URL.createObjectURL(event.target.files[0]);
+            document.getElementById('covercancle').style="display:block"
+            document.getElementById('coversave').style="display:block"
+            document.getElementById('abcd').style="display:none"
+            }
+        function canclecover(){
+            document.getElementById('coverpic').src="/image/{{cover_pic}}"
+            document.getElementById('covercancle').style="display:none"
+            document.getElementById('coversave').style="display:none"
+        }
+        function canclepro(){
+            document.getElementById('procancle').style="display:none"
+            document.getElementById('prosave').style="display:none"
+            document.getElementById('profilepic').src="{{profile_img}}"
+        }
+        function addprofile(){
+            var formData = new FormData();
+        formData.append("file",$("input[id='ad']")[0].files[0]);
+        csrf_token = $('input[name="csrfmiddlewaretoken"]').val();
+        formData.append("csrfmiddlewaretoken", csrf_token);
+        $.ajax({
+        type:'POST',
+        url:"/profilepic{{para}}",
+        processData: false,
+        contentType : false,
+        data:formData,
+              success: function (data) {
+                document.getElementById('procancle').style="display:none"
+                document.getElementById('prosave').style="display:none"
+        
+              }
+            })
+            }
+            function addcover(){
+                var formData = new FormData();
+                formData.append("file", $('input[id="adc"]')[0].files[0]);
+
+                csrf_token = $('input[name="csrfmiddlewaretoken"]').val();
+                formData.append("csrfmiddlewaretoken", csrf_token);
+                $.ajax({
+                type:'POST',
+                url:"/coverpic{{para}}",
+                processData: false,
+                contentType : false,
+                data:formData,
+                  success: function (data) {
+                    document.getElementById('covercancle').style="display:none"
+                    document.getElementById('coversave').style="display:none"
+            
+                  }
+                })
+            }
+    </script>
+    </html>

@@ -1,0 +1,147 @@
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+<style>
+    
+    #mic{margin-left:1400px;margin-top:-350px;position:fixed}
+    .loader {
+        position: relative;
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+        background: linear-gradient(#f07e6e, #84cdfa, #5ad1cd);
+        animation: animate 2s linear infinite;
+        margin-top:-30px;
+        margin-left:20px;
+        display:none;
+    }
+    
+    @keyframes animate {
+        0% {
+            transform: rotate(0deg);
+        }
+        100% {
+            transform: rotate(360deg);
+        }
+    }
+    
+    .loader span {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        border-radius: 50%;
+        background: linear-gradient(#f07e6e, #84cdfa, #5ad1cd);
+    }
+    
+    .loader span:nth-child(1) {
+        filter: blur(5px);
+    }
+    
+    .loader span:nth-child(2) {
+        filter: blur(10px);
+    }
+    
+    .loader span:nth-child(3) {
+        filter: blur(25px);
+    }
+    
+    .loader span:nth-child(4) {
+        filter: blur(50px);
+    }
+    
+    .loader:after {
+        content: '';
+        position: absolute;
+        top: 2px;
+        left: 2px;
+        right: 2px;
+        bottom: 2px;
+        background: #f1f1f1;
+        border: solid white 10px;
+        border-radius: 50%;
+    }
+</style>
+    <div id="mic">
+<div onclick="speech()" id="speech" style="height:50px;width:50px;border-radius:50px;background-image: linear-gradient(50deg, #81FFEF 20%, #ABDCFF 80%); padding-top:10px; padding-left:15px; ">{% csrf_token %}<i class="fa fa-microphone" style="font-size:30px;"></i></div><div id="assistent" style="margin-left:80px;margin-top:-40px;"></div>
+<div class="loader" id="loader" onclick="hide1()">
+    <span></span>
+    <span></span>
+    <span></span>
+    <span></span>
+</div>
+<div  id="output"> </div>
+</div>
+<script src="https://code.jquery.com/jquery-3.5.1.js"integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc="crossorigin="anonymous"></script>
+<script>
+    speech()
+    function speech(){
+            document.getElementById('loader').style="display:block;"
+            document.getElementById('mic').style="margin-left:1250px;"
+            document.getElementById('speech').style="height:55px;width:200px;border-radius:5px;background-image: linear-gradient(50deg, #81FFEF 20%, #ABDCFF 80%);    padding-top:20px;padding-left:20px;"
+            document.getElementById('assistent').innerHTML='listening....'
+            var SpeechRecognition = SpeechRecognition || webkitSpeechRecognition;
+            var SpeechGrammarList = SpeechGrammarList || webkitSpeechGrammarList;
+            var grammar = "#JSGF V1.0;";
+            var recognition = new SpeechRecognition();
+            recognition.start();
+            var speechRecognitionList = new SpeechGrammarList();
+            speechRecognitionList.addFromString(grammar, 1);
+            recognition.grammars = speechRecognitionList;
+            recognition.lang = "en-US";
+            recognition.interimResults = false;
+            recognition.onresult = function (event) {
+                var last = event.results.length - 1;
+                var command = event.results[last][0].transcript;
+                document.getElementById('output').style="margin-top:10px;background:white;padding:5px 5px 5px 5px;margin-left:-0px;width:200px;"
+                document.getElementById('output').innerHTML=command.toLowerCase()
+                var formData = new FormData();
+            csrf_token = $('input[name="csrfmiddlewaretoken"]').val();
+            formData.append("csrfmiddlewaretoken", csrf_token);
+            formData.append("text", command.toLowerCase());
+            $.ajax({
+            type:'POST',
+            url:"/speech{{para}}",
+            processData: false,
+            contentType : false,
+            data:formData,
+              success: function (data) {
+                document.getElementById('output').style="margin-top:10px;background:white;padding:5px 5px 5px 5px;margin-left:-0px;width:200px;"
+                document.getElementById('output').innerHTML=data
+                window.location.href=data
+                        
+              }
+            })
+    
+            };
+    recognition.onspeechend = function () {
+        recognition.stop();
+        document.getElementById('loader').style="display:none"
+        document.getElementById('mic').style="margin-left:1400px;;"
+        document.getElementById('speech').style="height:50px;width:50px;border-radius:50px;background-image: linear-gradient(50deg, #81FFEF 20%, #ABDCFF 80%); padding-top:10px; padding-left:15px;"
+        document.getElementById('assistent').innerHTML=""
+        document.getElementById('output').innerHTML=''
+
+    };
+    recognition.onerror = function (event) {
+        document.getElementById('loader').style="display:none"
+        document.getElementById('mic').style="margin-left:1400px;;"
+        document.getElementById('speech').style="height:50px;width:50px;border-radius:50px;background-image: linear-gradient(50deg, #81FFEF 20%, #ABDCFF 80%); padding-top:10px; padding-left:15px;"
+        document.getElementById('assistent').innerHTML=""
+        document.getElementById('output').innerHTML=''
+
+    };
+   
+    }
+    function hide1(){
+        document.getElementById('loader').style="display:none"
+        document.getElementById('mic').style="margin-left:1400px;;"
+        document.getElementById('speech').style="height:50px;width:50px;border-radius:50px;background-image: linear-gradient(50deg, #81FFEF 20%, #ABDCFF 80%); padding-top:10px; padding-left:15px;"
+        document.getElementById('assistent').innerHTML=""
+        document.getElementById('output').innerHTML=''
+
+        var SpeechRecognition = SpeechRecognition || webkitSpeechRecognition;
+
+        var recognition = new SpeechRecognition();
+            recognition.stop();
+
+    }
+</script>

@@ -1,0 +1,126 @@
+<html>
+        <head>
+            <title>GIT</title>
+        </head>
+        <script src="https://code.jquery.com/jquery-3.5.1.js"integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc="crossorigin="anonymous"></script>
+
+    <style>
+        * {
+            box-sizing: border-box;
+          }
+a{text-decoration:none;color:black}
+        li{list-style:none}          input:focus{background-color: #D3F8F9;transition: all 1s ease 0s;border: 1px solid transparent;outline: 0;}          #left-bar{width:160px;background-image: linear-gradient(135deg, #ABDCFF 10%, #0396FF 100%);height:1490px;position:fixed;margin-top:-10px;}
+        #left-bar ul{margin-left:-35px;margin-top:100px;}
+        #left-bar li{list-style: none;width:140px;border-radius:30px;margin-top:20px;background-image: linear-gradient(135deg, #E3FDF5 10%, #FFE6FA 100%);font-size:20px;padding:5px 5px 5px 15px;border:1px solid transparent;}
+        #left-bar li:hover{background-image: linear-gradient(55deg, #F97794 10%, #ABDCFF 100%);}
+        #pic{height:100px;width:100px;border-radius:50px;margin-left:30px;margin-top:80px;}
+        #pic img{height:100px;width:100px;border-radius:50px;}
+        #name{margin-left:5px;width:150px;text-align:center;margin-top:15px;padding-top:7px;border-radius:5px;background:white;}
+        #middle{height:900px;background:white;width:1305px;margin-left:165px;margin-top:-10px;position:relative;border-radius:5px;}
+        #heading{background: url(/static/ce.jpeg);background-attachment: fixed;width: 1305px;height: 645px;background-size:1480px 800px;background-repeat;no-repeat; position: relative;overflow: hidden;margin-top: 1px;font-size:41px;;border-radius:5px;border:2px solid #81FFEF;}
+        #heading > header {position: absolute;bottom: 0;left: 0;width: 1350px;;padding: 20px 10px;background: inherit;background-attachment: fixed;}
+#heading > header::before {content: "";position: absolute;margin-top: -550px;left: 0;width: 30%;height: 1400px;background: linear-gradient(135deg, #81FFEF 10%, #F067B4 100%);;background-attachment: fixed;-webkit-filter: blur(30px);filter: blur(100px);transform: scale(2) translateY(20px);transform:rotate(90deg)}
+        #heading >header>  h4 {margin: 0;color: white;position: relative;z-index: 1;font-family: Arial, Helveti sans-serif;background: linear-gradient(to right, #f32170, #ff6b08, #cf23cf);-webkit-text-fill-color: transparent;-webkit-background-clip: text;        }
+                        .registration{width:230px;height:30px;padding:5px 5px 5px 5px;border-radius:5px;margin-top:-620px;margin-left:1050px;background-image: linear-gradient(55deg, #F97794 10%, #ABDCFF 100%);position:absolute;font-size:20px;}
+
+        #logo{background-image: linear-gradient(190deg, #ABDCFF 50%, #0396FF 100%);width:1305px;text-align:center;border-radius:5px;}
+        #content{background-image: linear-gradient(50deg, #81FFEF 20%, #ABDCFF 80%);border-radius:5px;padding:5px 5px 5px 5px;margin-top:3px;width:845px;}
+        #updates{background-image: linear-gradient(50deg, #81FFEF 20%, #ABDCFF 80%);position:absolute;width:455px;margin-left:847;margin-top:-692px;height:692px;border-radius:5px;overflow:scroll}
+        #updateheading{font-size:25px;height:40px;margin-top:-735px;width:455px;position:absolute;margin-left:847px;padding-top:7px;border-radius:5px;background-image: linear-gradient(50deg, #F97794 50%, #ABDCFF 100%);text-align:center}
+                #sth{text-align:center;margin-top:3px;padding:5px 5px 5px 5px;border-radius:5px;font-size:25px;}
+        #st{width:383px;height:530px;margin-left:4px;background-image: linear-gradient(50deg, #81FFEF 20%, #ABDCFF 80%);position:relative;padding:5px 5px 5px 5px;display:inline-block;margin-top:-4px;border-radius:5px;overflow:scroll}
+        #st div{height:60px;border:0px solid gray;border-radius:5px;background:white;padding-top:1px;margin-top:3px;}
+        #st div div{height:53px;width:52px;border:1px solid black;border-radius:50px;margin-top:5px;margin-left:5px;background:white;}
+        #st div div img{height:50px;width:50px;border-radius:50px;}
+#st div  span{height:30px;text-align:left;margin-left:60px;margin-top:-37px;width:150px;padding:5px 5px 5px 5px;border-radius:5px;position:absolute}
+
+        #participants{position:fixed;margin-top:-1410px;display:none;margin-left:450px;box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);width:430px;height:600px;padding:25px 5px 5px 25px;border-radius:5px;background-image: linear-gradient(50deg, #81FFEF 20%, #ABDCFF 80%);}
+        .participants{text-align:center;width:230px;height:30px;padding:5px 5px 5px 5px;border-radius:5px;margin-top:-460px;margin-left:1050px;background-image: linear-gradient(55deg, #F97794 10%, #ABDCFF 100%);position:absolute;font-size:20px;}
+                #st::-webkit-scrollbar{width:1px;}
+        #st { overflow-x: hidden;}
+        #updates::-webkit-scrollbar{width:1px;}
+        #updates { overflow-x: hidden;}
+        body::-webkit-scrollbar{width:1px;}
+        body { overflow-x: hidden;}
+    </style>
+    <body >
+        {% csrf_token %}
+            <div id="left-bar">
+             <a href="/profile{{para}}"><div id="pic">
+                <img src="{{profile_img}}">
+            </div>
+            <div id="name">{{name}}</div></a>
+                <ul>
+                    <a href="/{{para1}}"><li>Home</li></a>
+                <a href="/about{{para}}"><li>About</li></a>
+                <a href="/departments{{para}}"><li>Departments</li></a>
+                <a href="/clubs{{para}}"><li>Clubs</li></a>
+                <a href="/trainingandplacement{{para}}" ><li style="font-size:15px;">Training placement</li></a>
+                 <a href="/{{log.0}}"><li>{{log.1}}</li></a>
+                </ul>
+            </div>
+            <div id="middle">
+                <div id="logo">
+                <img src="/static/Gates.png" >
+                <div style=" font-size:20px;margin-left:1010px;margin-top:-89px;padding-bottom:15px;padding-top:5px;text-align:left">Contacts:<br>
+                    Email:vaddeadarsh150@gmail.com<br>
+                    Phone:8328267589
+                </div>
+            </div>
+                <div id="heading">
+                 <header>
+                    <h4>Welcome To <br>Department of Civil Engineering</h4>
+                </header>
+                </div>
+                {% if email  in emaillist %}
+
+                <div class="participants" onclick="participants()"> Students</div>
+
+                {% endif %}
+                <div id="content">
+                <h3 style="font-size: 30px;"><i>Civil Engineering:</i></h3><div style="width:810px;text-align: justify;text-justify: inter-word;;font-size: 20px;">
+                    <p><p><h3>About Department:</h3>
+                        Computer science acts at the epicenter of this new age of information and it is an ever-changing field that requires persistence, flexibility, and adaptability, but leads to highly rewarding careers with exciting and challenging opportunities.
+                        <br><br>The Department of Computer Science and Engineering (CSE) was established in the year 2001 with a modest intake of 45 into UG program in CSE (B.Tech.).The Intake was increased to 60 in the year 2001, 90 in 2008 and further increased to 120 in 2010. The Department started UG program in ‘Computer Science and Engineering ‘ as specialization with an intake of 60 in the year 2020 and increased it to 120 for AY 2021-2022.
+                        <br><br>The CSE Department comprises of faculty who are not just very experienced academically but also has understanding about the latest industry advancements. Its knowledgeable faculty members are engaged in encouraging relevant educational and innovative research across the leading areas of computer science and engineering.The department with well-established labs is all equipped in preparing the students in computer science Engineering, an ever-evolving discipline, and its latest developments. We proudly announce that many of our alumni are leaders in academia, industry and government.
+                        <br><br>The Department regularly organizes various activities such as Seminars, Workshops, Technical Symposia and Guest Lectures with an aim to provide awareness, exposure and hands on experience to the students in latest technologies and better prepare them for the future.
+                        <br><br>The Department is headed by Mr. A RamaPrathap Reddy , who has 19 years of teaching experience. The department has well qualified, dedicated and experienced faculty and committed supporting staff.
+                    </p>
+                
+                </div>
+            </div>
+            <div id="updateheading">Updates</div>
+
+                <div id="updates">
+                                        {% for i in updates %}
+                    <div style="padding-left:20px;margin-top:15px;"> {{i.date}} | {{i.urltext}} <a href="{{i.url}}"><span style="color:#F97794;">Click </span></a></div>
+                    {% endfor %}  
+
+                </div>
+                <div id="participants">
+                    <span  onclick="hide()" style="transform:rotate(45deg);background:white;width:25px;height:25px;position:absolute;margin-top:-15px;margin-left:350px;border-radius:50px;font-size:30px;padding-left:5px;padding-bottom:5px;">+</span>
+
+                <div id="sth">Participant</div>
+                <div id="st"style="margin-left:0px;">
+                    {% for i in acclist %}
+                    <a href="/profileview{{i.profile_img}}"><div><div><img src="{{i.profile}}" ></div><span>{{i.name}} </span><span style="margin-left:250px;">{{i.rollno}}</span></div></a>
+                    {% endfor %}
+                </div>
+                </div>
+
+             </div>
+            {% include 'speech.html'%}
+    </body>
+    <script>
+        function hide(){            
+            try{document.getElementById('participants').style="display:none;"}catch{}
+try{document.getElementById('middle').style="position:relative;"}catch{}
+            try{document.getElementById('left-bar').style="margin-top:-10px;;"}catch{}
+        }function participants(){
+            try{document.getElementById('participants').style="display:block;"}catch{}
+try{document.getElementById('middle').style="position:fixed;"}catch{}
+            try{document.getElementById('left-bar').style="margin-top:-20px;;"}catch{}
+
+        }
+    </script>
+</html>

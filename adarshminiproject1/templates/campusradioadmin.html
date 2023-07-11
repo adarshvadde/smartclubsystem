@@ -1,0 +1,411 @@
+<html>
+        <head>
+            <title>GIT</title>
+        </head>
+        <script src="https://code.jquery.com/jquery-3.5.1.js"integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc="crossorigin="anonymous"></script>
+
+    <style>
+        * {
+            box-sizing: border-box;
+          }
+a{text-decoration:none;color:black}
+          input:focus{background-color: #D3F8F9;transition: all 1s ease 0s;border: 1px solid transparent;outline: 0;}          #left-bar{width:160px;background-image: linear-gradient(135deg, #ABDCFF 10%, #0396FF 100%);height:1490px;position:fixed;margin-top:-10px;}
+        #left-bar ul{margin-left:-35px;margin-top:100px;}
+        #left-bar li{list-style: none;width:140px;border-radius:30px;margin-top:20px;background-image: linear-gradient(135deg, #E3FDF5 10%, #FFE6FA 100%);font-size:20px;padding:5px 5px 5px 15px;border:1px solid transparent;}
+        #left-bar li:hover{background-image: linear-gradient(55deg, #F97794 10%, #ABDCFF 100%);}
+        #pic{height:100px;width:100px;border-radius:50px;margin-left:30px;margin-top:80px;}
+        #pic img{height:100px;width:100px;border-radius:50px;}
+        #name{margin-left:5px;width:150px;text-align:center;margin-top:15px;padding-top:7px;border-radius:5px;background:white;}
+        #middle{height:900px;background:white;width:1305px;margin-left:165px;margin-top:-10px;position:relative;border-radius:5px;}
+         #clubs{width:150;background-image: linear-gradient(190deg, #ABDCFF 50%, #86FDE8 100%);margin-top:3px;display:inline-block;border-radius:5px;position:absolute}
+        #clubs li{margin-left:-35px;margin-top:7px;height:55px;width:140px;text-align:center;border-radius:5px;padding-top:20px;background-image: linear-gradient(135deg, #E3FDF5 10%, #FFE6FA 100%);}
+        #heading{background: url(/static/cr.jpg);margin-left:153px;background-attachment: fixed;width: 1152px;height: 645px;background-size:1480px 800px;background-repeat;no-repeat; position: relative;overflow: hidden;margin-top: 1px;font-size:41px;;border-radius:5px;border:2px solid #81FFEF;}
+        #heading > header {position: absolute;bottom: 0;left: 0;width: 1350px;;padding: 20px 10px;background: inherit;background-attachment: fixed;}
+        #heading > header::before {content: "";position: absolute;margin-top: -550px;left: 0;width: 30%;height: 1400px;background: linear-gradient(135deg, #81FFEF 10%, #F067B4 100%);;background-attachment: fixed;-webkit-filter: blur(30px);filter: blur(100px);transform: scale(2) translateY(20px);transform:rotate(90deg)}
+        #heading >header>  h4 {margin: 0;color: white;position: relative;z-index: 1;font-family: Arial, Helveti sans-serif;background: linear-gradient(to right, #f32170, #ff6b08, #cf23cf);-webkit-text-fill-color: transparent;-webkit-background-clip: text;        }
+
+        #logo{background-image: linear-gradient(190deg, #ABDCFF 50%, #0396FF 100%);width:1305px;text-align:center;border-radius:5px;}
+        #content{background-image: linear-gradient(50deg, #81FFEF 20%, #ABDCFF 80%);border-radius:5px;padding:5px 5px 5px 5px;margin-top:3px;width:845px;}
+        #updates{background-image: linear-gradient(50deg, #81FFEF 20%, #ABDCFF 80%);position:absolute;width:455px;margin-left:847;margin-top:-2450px;height:2450px;border-radius:5px;overflow:scroll}
+        #updateheading{font-size:25px;height:40px;margin-top:-2493px;width:455px;position:absolute;margin-left:847px;padding-top:7px;border-radius:5px;background-image: linear-gradient(50deg, #F97794 50%, #ABDCFF 100%);text-align:center}
+                #sth{text-align:center;margin-top:3px;padding:5px 5px 5px 5px;border-radius:5px;font-size:25px;}
+        #st{width:383px;height:530px;margin-left:4px;background-image: linear-gradient(50deg, #81FFEF 20%, #ABDCFF 80%);position:relative;padding:5px 5px 5px 5px;display:inline-block;margin-top:-4px;border-radius:5px;overflow:scroll}
+        #st div{height:60px;border:0px solid gray;border-radius:5px;background:white;padding-top:1px;margin-top:3px;}
+        #st div div{height:53px;width:52px;border:1px solid black;border-radius:50px;margin-top:5px;margin-left:5px;background:white;}
+        #st div div img{height:50px;width:50px;border-radius:50px;}
+#st div  span{height:30px;text-align:left;margin-left:60px;margin-top:-37px;width:150px;padding:5px 5px 5px 5px;border-radius:5px;position:absolute}
+
+        #participants{position:fixed;margin-top:-3150px;display:none;margin-left:450px;box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);width:430px;height:600px;padding:25px 5px 5px 25px;border-radius:5px;background-image: linear-gradient(50deg, #81FFEF 20%, #ABDCFF 80%);}
+        .participants{text-align:center;width:230px;height:30px;padding:5px 5px 5px 5px;border-radius:5px;margin-top:-500px;margin-left:1050px;background-image: linear-gradient(55deg, #F97794 10%, #ABDCFF 100%);position:absolute;font-size:20px;}
+                .activitys{text-align:center;width:230px;height:30px;padding:5px 5px 5px 5px;border-radius:5px;margin-top:-620px;margin-left:1050px;background-image: linear-gradient(55deg, #F97794 10%, #ABDCFF 100%);position:absolute;font-size:20px;}
+        .score{text-align:center;width:230px;height:30px;padding:5px 5px 5px 5px;border-radius:5px;margin-top:-580px;margin-left:1050px;background-image: linear-gradient(55deg, #F97794 10%, #ABDCFF 100%);position:absolute;font-size:20px;}
+        .addupdate{text-align:center;width:230px;height:30px;padding:5px 5px 5px 5px;border-radius:5px;margin-top:-580px;margin-left:1050px;background-image: linear-gradient(55deg, #F97794 10%, #ABDCFF 100%);position:absolute;font-size:20px;}
+        .addquiz{text-align:center;width:230px;height:30px;padding:5px 5px 5px 5px;border-radius:5px;margin-top:-540px;margin-left:1050px;background-image: linear-gradient(55deg, #F97794 10%, #ABDCFF 100%);position:absolute;font-size:20px;}
+        
+        #addupdate{position:fixed;margin-top:100px;display:none;margin-left:400px;box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);width:730px;height:600px;padding:25px 5px 5px 50px;border-radius:5px;background-image: linear-gradient(50deg, #81FFEF 20%, #ABDCFF 80%);}
+        #addupdate div{height:40px;margin-top:5px;}
+        #addupdate div input{border:  1px solid transparent;height:35px;width:500px;text-align:center;border-radius:5px;}
+        #addupdate div  div{height:350px;width:500px;margin-left:80px;margin-top:0px;border-radius:5px;padding:170px 0px 0px 200px;;font-size:25px;background:white;position:absolute}
+        .submit{background-image: linear-gradient(55deg, #F97794 10%, #ABDCFF 100%);margin-top:400px;position:relative;}
+
+        #addquize{position:fixed;margin-top:100px;display:none;margin-left:400px;box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);width:730px;height:570px;padding:25px 5px 5px 50px;border-radius:5px;background-image: linear-gradient(50deg, #81FFEF 20%, #ABDCFF 80%);overflow:scroll;}
+        .title input{border:  1px solid transparent;height:35px;width:640px;text-align:center;border-radius:5px;}
+        .question textarea{border:  1px solid transparent;height:35px;width:615px;border-radius:5px;margin-top:15px;}
+        .option{margin-left:50px;}
+        .option input{border:  1px solid transparent;height:35px;width:500px;text-align:center;border-radius:5px;margin-top:5px;}
+        .answer input{border:  1px solid transparent;height:35px;width:200px;text-align:center;border-radius:5px;margin-top:5px;}
+
+        #participantscore{position:fixed;margin-top:100px;display:none;margin-left:300px;box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);width:890px;height:570px;padding:50px 5px 5px 20px;border-radius:5px;background-image: linear-gradient(50deg, #81FFEF 20%, #ABDCFF 80%);overflow:scroll;}
+        #participantscore div{width:850px;height:80px;background:white;border-radius:5px;margin-top:5px;padding-top:1px;}
+        #participantscore div div{width:72px;height:73px;border-radius:50px;border:1px solid black;margin-top:5px;margin-left:10px;}
+        #participantscore div div img{width:70px;height:70px;border-radius:50px;}
+        
+        #eventparticipation{position:fixed;margin-top:100px;display:none;margin-left:400px;box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);width:600px;height:570px;padding:50px 5px 5px 20px;border-radius:5px;background-image: linear-gradient(50deg, #81FFEF 20%, #ABDCFF 80%);overflow:scroll;}
+        #eventparticipation div{width:565px;height:80px;background:white;border-radius:5px;margin-top:5px;padding-top:1px;}
+        #eventparticipation div div{width:72px;height:73px;border-radius:50px;border:1px solid black;margin-top:5px;margin-left:10px;}
+        #eventparticipation div div img{width:70px;height:70px;border-radius:50px;}
+
+
+        #eventparticipation::-webkit-scrollbar{width:1px;}
+        #eventparticipation { overflow-x: hidden;}
+        #participantscore::-webkit-scrollbar{width:1px;}
+        #participantscore { overflow-x: hidden;}
+        #addquize::-webkit-scrollbar{width:1px;}
+        #addquize { overflow-x: hidden;}
+        #st::-webkit-scrollbar{width:1px;}
+        #st { overflow-x: hidden;}
+        #updates::-webkit-scrollbar{width:1px;}
+        #updates { overflow-x: hidden;}
+        body::-webkit-scrollbar{width:1px;}
+        body { overflow-x: hidden;}
+    </style>
+    <body >        {% csrf_token %}
+
+            <div id="left-bar">
+             <a href="/profile{{para}}"><div id="pic">
+                <img src="{{profile_img}}">
+            </div>
+            <div id="name">{{name}}</div></a>
+                <ul>
+                    <a href="/{{para1}}"><li>Home</li></a>
+                <a href="/about{{para}}"><li>About</li></a>
+                <a href="/departments{{para}}"><li>Departments</li></a>
+                <a href="/clubs{{para}}"><li>Clubs</li></a>
+                <a href="/trainingandplacement{{para}}" ><li style="font-size:15px;">Training placement</li></a>
+                 <a href="/{{log.0}}"><li>{{log.1}}</li></a>
+                </ul>
+            </div>
+            <div id="middle">
+                <div id="logo">
+                <img src="/static/Gates.png" >
+                <div style=" font-size:20px;margin-left:1010px;margin-top:-89px;padding-bottom:15px;padding-top:5px;text-align:left">Contacts:<br>
+                    Email:vaddeadarsh150@gmail.com<br>
+                    Phone:8328267589
+                </div>
+            </div>
+            <div id="clubs" class="clubs">
+
+                <ul>
+                <a href="/pythonclub{{para}}"><li><div>Python Club</div></li></a>
+                <a href="/codingclub{{para}}"><li><div>Codeing Club</div></li></a>
+                <a href="/campus{{para}}"><li><div>Campus Radio</div></li></a>
+                <a href="/graphicclub{{para}}"><li><div>Graphic Club</div></li></a>
+                <a href="/ideaclub{{para}}"><li><div>Idea Club</div></li></a>
+                <a href="/literacyclub{{para}}"><li><div>Literacy Club</div></li></a>
+                <a href="/projectclub{{para}}"><li><div>Project Club</div></li></a>
+                <a href="/speakingclub{{para}}"><li><div>Speaking Club</div></li></a>
+                <a href="/innerwheelclub{{para}}"><li><div>Innerwheel Club</div></li></a>
+                <a href="/euphoriaclub{{para}}"><li><div>Euphoria Club</div></li></a>
+                </ul>
+            </div>
+                <div id="heading">
+                 <header>
+                    <h4>Welcome To Campus Radio</h4>
+                    </header>
+                </div>
+                <div class="addupdate" onclick="addupdate()"> Add Updates</div>
+                <div class="addquiz" onclick="addquiz()"> Add Quiz</div>
+                <div class="participants" onclick="participants()"> Participants</div>
+
+                <div id="content">
+                    <h3 style="font-size: 30px;"><i>Campus Radio:</i></h3><div style="width:810px;text-align: justify;text-justify: inter-word;font-size: 20px;">
+                        <p>
+                            Campus Radio refers to radio stations that are operated by universities or colleges. These radio stations are typically run by students, faculty, or staff members of the university or college and may serve as a platform for various types of content, such as music, news, interviews, sports, and other programming.
+                            Campus radio stations are often non-commercial and may be funded by the university or college, student fees, or donations. They provide an opportunity for students and other members of the community to gain experience in radio broadcasting, journalism, and media production.
+                            In addition to serving as a platform for student learning and creativity, campus radio stations can also provide a valuable service to the community by providing local news and information, promoting local events, and showcasing local artists and musicians. Some campus radio stations also have an online presence, which allows them to reach a wider audience beyond their local community.
+                            <br><h3>Radio Jockey:</h3> A radio jockey (RJ) in campus radio is the on-air personality responsible for hosting a radio show on a college or university campus radio station. The role of an RJ is to engage with the audience, play music, deliver news and weather updates, conduct interviews, and provide entertainment and information to listeners.
+                            RJs in campus radio stations are usually students who are passionate about music, broadcasting, and media. They often work as volunteers or interns and receive training and guidance from experienced radio professionals. The role of an RJ in a campus radio station provides a valuable opportunity for students to gain practical experience in media and broadcasting, build their skills and network, and prepare for a career in the industry.
+                            Audio Editing: Audio editing in campus radio refers to the process of manipulating and modifying recorded audio content to improve its quality, clarity, and overall effectiveness. It is an essential part of radio production and is used to create polished and professional-sounding broadcasts.
+                            Audio editing may involve a wide range of tasks, such as:
+                            <br><h3>Cutting and Trimming:</h3> Removing unwanted sections of audio, such as dead air, background noise, or mistakes made by the host or interviewee.
+                            Adjusting Levels: Balancing the volume levels of different tracks or segments of audio to ensure that they are consistent and easy to listen to.
+                            Applying Effects: Adding effects such as reverb, compression, or equalization to improve the sound quality or to create a specific mood or atmosphere.
+                            Mixing: Combining multiple tracks of audio, such as music, sound effects, and voice recordings, into a cohesive and seamless final product.
+                            
+                            <br><h3>Exporting:</h3> Saving the edited audio in a format that is suitable for broadcasting or distribution on various platforms, such as podcasts or social media.
+                            Audio editing can be done using various software programs, such as Audacity, Adobe Audition, or GarageBand, and can be performed by trained staff or student volunteers at campus radio stations.
+                            <br><h3>Graphic Designer :</h3> A graphic designer in a campus radio context would be responsible for creating visual content such as logos, promotional materials, social media graphics, and other design elements that help to promote the station's brand and events. They may work closely with the marketing or promotions team to create eye-catching designs that attract listeners and build a strong visual identity for the station. Additionally, they may be responsible for designing materials for events and programs hosted by the station, such as posters, flyers, or digital advertisements. A graphic designer in campus radio would likely need to have a strong understanding of design principles and software tools such as Adobe Photoshop, Illustrator, and InDesign.
+                            <br><h3>E-Publicity:</h3> "E Publicity" in campus radio refers to the promotion of events or activities through electronic means, such as social media, email, or other online platforms. Campus radio stations often use their online presence to advertise upcoming events, concerts, or promotions in order to attract students and the wider community to participate or attend. This can include creating graphics or videos to promote events, sharing information about sponsors or partners, and encouraging listeners to share the information on their own social media accounts. The goal of E publicity is to increase awareness and participation in campus events and to build a strong sense of community among students and the wider public.
+                            <br><h3>Content Writer:</h3> A content writer in campus radio is responsible for creating written content for the radio station, such as scripts for radio shows, promotional materials, news articles, and social media posts. They work closely with the radio hosts and producers to ensure that the written content aligns with the station's overall goals and objectives.
+                            As a content writer in campus radio, you may also be responsible for conducting research, interviewing guests, and fact-checking information to ensure the accuracy of the content you create. It is important to have strong writing skills, a good understanding of the target audience, and a willingness to learn about different topics and areas of interest.
+                            In addition to writing content, a content writer in campus radio may also be involved in editing and revising content created by others, as well as managing the station's website and social media accounts. Overall, the role of a content writer is critical to the success of a campus radio station, as they help to create engaging and informative content that keeps listeners engaged and informed.
+                            <br><h3>Scheduling Team:</h3> Scheduling in campus radio refers to the process of organizing and planning the broadcast content and programming of a radio station on a regular basis. This involves creating a schedule of specific shows, music playlists, news segments, and other programming elements that will be broadcast at specific times on specific days.
+                            In campus radio, scheduling is often done by a team of students who work together to ensure that the station's programming is varied, engaging, and reflective of the interests and needs of the campus community. This may involve selecting music, developing talk show topics, inviting guests to appear on the station, and coordinating the technical aspects of broadcasting.
+                            A well-planned and executed schedule can help to attract and retain listeners, build a loyal audience, and create a sense of community around the campus radio station. It can also provide valuable opportunities for students to develop their skills in media production, broadcasting, and programming.
+                            </p>
+                    <br> CEO : A.Krishna Teja <br><br>
+                                 CQO : Y.Yasmeen<br><br>
+                                 COO : S.Momena<br><br>
+                                 CTO : R.Charan <br><br>
+                                 CMO : B.R.Jayanth<br><br>
+                                 CFO : B.Yasmeen<br><br>
+                    
+                    </div>
+            </div>
+            <div id="updateheading">Updates</div>
+
+                <div id="updates">
+                                        {% for i in updates %}
+                    <div style="padding-left:20px;margin-top:15px;"> {{i.date}} | {{i.urltext}} <a href="{{i.url}}"><span style="color:#F97794;">Click </span></a></div>
+                    {% endfor %}  
+
+                </div>
+                
+
+                <div id="participants">
+                    <span  onclick="hide()" style="transform:rotate(45deg);background:white;width:25px;height:25px;position:absolute;margin-top:-15px;margin-left:350px;border-radius:50px;font-size:30px;padding-left:5px;padding-bottom:5px;">+</span>
+
+                <div id="sth">Participant</div>
+                <div id="st"style="margin-left:0px;">
+                    {% for i in acclist %}
+                    <a href="/profileview{{i.profile_img}}"><div><div><img src="{{i.profile}}" ></div><span>{{i.name}} </span><span style="margin-left:250px;">{{i.rollno}}</span></div></a>
+                    {% endfor %}
+                </div>
+                </div>
+                </div>
+
+                <div id="addupdate">
+                    <span  onclick="hide()" style="transform:rotate(45deg);background:white;width:25px;height:25px;position:absolute;margin-top:-15px;margin-left:650px;border-radius:50px;font-size:30px;padding-left:5px;padding-bottom:5px;">+</span>
+
+                    <div class="date">Date:<span style="margin-left:43px;"><input type="date" name="date"></span> </div>
+            <div class="urltext">URL Text:<span style="margin-left:10px;"><input type="text" name="urltext" oninput="urltext()" id="urltext"></span></div>
+                    <div class="url">URL:<span style="margin-left:41px;"><input type="url" name="url" id="url"></span></div>  
+                    <div class="image">Image:<span style="margin-left:41px;"><div><label for="file">Add image</label><input id="file" type="file" name="file" style="display:none;"></div></span></div>  
+                    <div style="margin-top:-40px;margin-left:80px;">note:if you add forms you can add on URL</div>
+                    <div class="submit" style="margin-top:335px;width:100px;text-align:center;padding-top:10px;border-radius:5px;margin-left:250px;" onclick="campusradioupdate()"> Submit</div>  
+
+                </div>
+                <div id="addquize">
+                    <span onclick="hide()" style="transform:rotate(45deg);background:white;width:25px;height:25px;position:absolute;margin-top:-15px;margin-left:650px;border-radius:50px;font-size:30px;padding-left:5px;padding-bottom:5px;">+</span>
+                    <form  method='post' action="/quizpost/campus{{para}}">{% csrf_token%}
+                        <div class="title" style="margin-left:0px;margin-bottom:10px;"><span style="margin-left:0px;margin-top:-20px;"><input type="date" name="date"></span> </div>
+
+                    <div class="title"><input type="text" name="quiztitle" placeholder="Quiz Title"></div>
+                    <div class="qoa">
+                    <div class="question">1.<textarea type="text" name="one" placeholder="1.Question"></textarea></div>
+                    <div class="option">A.<input type="text" name="oneA" placeholder="Option A"></div>
+                    <div class="option">B.<input type="text" name="oneB" placeholder="Option B"></div>
+                    <div class="option">C.<input type="text" name="oneC" placeholder="Option C"></div>
+                    <div class="option">D.<input type="text" name="oneD" placeholder="Option D"></div>
+                    <div class="answer">Answer:<input type="text" name="oneanswer" placeholder="Answer"></div>
+
+
+                    <div class="question">2.<textarea type="text" name="two" placeholder="2.Question"></textarea></div>
+                    <div class="option">A.<input type="text" name="twoA" placeholder="Option A"></div>
+                    <div class="option">B.<input type="text" name="twoB" placeholder="Option B"></div>
+                    <div class="option">C.<input type="text" name="twoC" placeholder="Option C"></div>
+                    <div class="option">D.<input type="text" name="twoD" placeholder="Option D"></div>
+                    <div class="answer">Answer:<input type="text" name="twoanswer" placeholder="Answer"></div>
+
+
+                    <div class="question">3.<textarea type="text" name="three" placeholder="3.Question"></textarea></div>
+                    <div class="option">A.<input type="text" name="threeA" placeholder="Option A"></div>
+                    <div class="option">B.<input type="text" name="threeB" placeholder="Option B"></div>
+                    <div class="option">C.<input type="text" name="threeC" placeholder="Option C"></div>
+                    <div class="option">D.<input type="text" name="threeD" placeholder="Option D"></div>
+                    <div class="answer">Answer:<input type="text" name="threeanswer" placeholder="Answer"></div>
+
+                    
+                    <div class="question">4.<textarea type="text" name="four" placeholder="4.Question"></textarea></div>
+                    <div class="option">A.<input type="text" name="fourA" placeholder="Option A"></div>
+                    <div class="option">B.<input type="text" name="fourB" placeholder="Option B"></div>
+                    <div class="option">C.<input type="text" name="fourC" placeholder="Option C"></div>
+                    <div class="option">D.<input type="text" name="fourD" placeholder="Option D"></div>
+                    <div class="answer">Answer:<input type="text" name="fouranswer" placeholder="Answer"></div>
+
+                    
+                    <div class="question">5.<textarea type="text" name="five" placeholder="5.Question"></textarea></div>
+                    <div class="option">A.<input type="text" name="fiveA" placeholder="Option A"></div>
+                    <div class="option">B.<input type="text" name="fiveB" placeholder="Option B"></div>
+                    <div class="option">C.<input type="text" name="fiveC" placeholder="Option C"></div>
+                    <div class="option">D.<input type="text" name="fiveD" placeholder="Option D"></div>
+                    <div class="answer">Answer:<input type="text" name="fiveanswer" placeholder="Answer"></div>
+
+                    
+                    <div class="question">6.<textarea type="text" name="six" placeholder="6.Question"></textarea></div>
+                    <div class="option">A.<input type="text" name="sixA" placeholder="Option A"></div>
+                    <div class="option">B.<input type="text" name="sixB" placeholder="Option B"></div>
+                    <div class="option">C.<input type="text" name="sixC" placeholder="Option C"></div>
+                    <div class="option">D.<input type="text" name="sixD" placeholder="Option D"></div>
+                    <div class="answer">Answer:<input type="text" name="sixanswer" placeholder="Answer"></div>
+
+                    
+                    <div class="question">7.<textarea type="text" name="seven" placeholder="7.Question"></textarea></div>
+                    <div class="option">A.<input type="text" name="sevenA" placeholder="Option A"></div>
+                    <div class="option">B.<input type="text" name="sevenB" placeholder="Option B"></div>
+                    <div class="option">C.<input type="text" name="sevenC" placeholder="Option C"></div>
+                    <div class="option">D.<input type="text" name="sevenD" placeholder="Option D"></div>
+                    <div class="answer">Answer:<input type="text" name="sevenanswer" placeholder="Answer"></div>
+
+                    
+                    <div class="question">8.<textarea type="text" name="eight" placeholder="8.Question"></textarea></div>
+                    <div class="option">A.<input type="text" name="eightA" placeholder="Option A"></div>
+                    <div class="option">B.<input type="text" name="eightB" placeholder="Option B"></div>
+                    <div class="option">C.<input type="text" name="eightC" placeholder="Option C"></div>
+                    <div class="option">D.<input type="text" name="eightD" placeholder="Option D"></div>
+                    <div class="answer">Answer:<input type="text" name="eightanswer" placeholder="Answer"></div>
+
+
+                    <div class="question">9.<textarea type="text" name="nine" placeholder="9.Question"></textarea></div>
+                    <div class="option">A.<input type="text" name="nineA" placeholder="Option A"></div>
+                    <div class="option">B.<input type="text" name="nineB" placeholder="Option B"></div>
+                    <div class="option">C.<input type="text" name="nineC" placeholder="Option C"></div>
+                    <div class="option">D.<input type="text" name="nineD" placeholder="Option D"></div>
+                    <div class="answer">Answer:<input type="text" name="nineanswer" placeholder="Answer"></div>
+
+
+                    <div class="question">10    .<textarea type="text" name="ten" placeholder="10.Question"></textarea></div>
+                    <div class="option">A.<input type="text" name="tenA" placeholder="Option A"></div>
+                    <div class="option">B.<input type="text" name="tenB" placeholder="Option B"></div>
+                    <div class="option">C.<input type="text" name="tenC" placeholder="Option C"></div>
+                    <div class="option">D.<input type="text" name="tenD" placeholder="Option D"></div>
+                    <div class="answer">Answer:<input type="text" name="tenanswer" placeholder="Answer"></div>
+
+
+                    </div>
+                    <div class="submit"  style="margin-top:10px;width:100px;text-align:center;padding-top:10px;border-radius:5px;margin-left:250px;"> <input type="submit" style="background:transparent;margin-top:-5px;border:transparent" value="Submit"></div>  
+                </form>
+                
+                </div>
+                
+                
+            </div>
+            {% include 'speech.html'%}
+
+    </body>
+    <script>
+        function activitys(){
+            try{document.getElementById('eventparticipation').style="display:block;"}catch{}
+            try{document.getElementById('addquize').style="display:none;"}catch{}
+            try{document.getElementById('participantscore').style="display:none;"}catch{}
+            try{document.getElementById('addupdate').style="display:none;"}catch{}
+try{document.getElementById('middle').style="position:fixed;"}catch{}
+            try{document.getElementById('left-bar').style="margin-top:-20px;;"}catch{}
+            try{document.getElementById('participants').style="display:none;"}catch{}
+
+
+        }
+        function score(){
+            try{document.getElementById('participantscore').style="display:block;"}catch{}
+            try{document.getElementById('eventparticipation').style="display:none;"}catch{}
+            try{document.getElementById('addquize').style="display:none;"}catch{}
+            try{document.getElementById('addupdate').style="display:none;"}catch{}
+try{document.getElementById('middle').style="position:fixed;"}catch{}
+            try{document.getElementById('left-bar').style="margin-top:-20px;;"}catch{}
+            try{document.getElementById('participants').style="display:none;"}catch{}
+
+
+            
+        }
+        function addupdate(){
+            try{document.getElementById('addupdate').style="display:block;"}catch{}
+            try{document.getElementById('eventparticipation').style="display:none;"}catch{}
+            try{document.getElementById('addquize').style="display:none;"}catch{}
+            try{document.getElementById('participantscore').style="display:none;"}catch{}
+try{document.getElementById('middle').style="position:fixed;"}catch{}
+            try{document.getElementById('left-bar').style="margin-top:-20px;;"}catch{}
+            try{document.getElementById('participants').style="display:none;"}catch{}
+
+
+            
+        }
+        function addquiz(){
+            try{document.getElementById('addquize').style="display:block;"}catch{}
+            try{document.getElementById('eventparticipation').style="display:none;"}catch{}
+            try{document.getElementById('participantscore').style="display:none;"}catch{}
+            try{document.getElementById('addupdate').style="display:none;"}catch{}
+try{document.getElementById('middle').style="position:fixed;"}catch{}
+            try{document.getElementById('left-bar').style="margin-top:-20px;;"}catch{}
+            try{document.getElementById('participants').style="display:none;"}catch{}
+
+
+            
+        }
+        function hide(){
+            try{document.getElementById('addquize').style="display:none;"}catch{}
+            try{document.getElementById('eventparticipation').style="display:none;"}catch{}
+            try{document.getElementById('participantscore').style="display:none;"}catch{}
+            try{document.getElementById('addupdate').style="display:none;"}catch{}
+try{document.getElementById('middle').style="position:relative;"}catch{}
+            try{document.getElementById('left-bar').style="margin-top:-10px;;"}catch{}            try{document.getElementById('participants').style="display:none;"}catch{}
+
+        }
+        function participants(){
+            try{document.getElementById('participants').style="display:block;"}catch{}
+try{document.getElementById('middle').style="position:fixed;"}catch{}
+            try{document.getElementById('left-bar').style="margin-top:-20px;;"}catch{}
+            try{document.getElementById('addquize').style="display:none;"}catch{}
+            try{document.getElementById('eventparticipation').style="display:none;"}catch{}
+            try{document.getElementById('participantscore').style="display:none;"}catch{}
+            try{document.getElementById('addupdate').style="display:none;"}catch{}
+        }
+        
+
+    
+        
+        function conformregistration(){
+            var formData = new FormData();
+            csrf_token = $('input[name="csrfmiddlewaretoken"]').val();
+            formData.append("csrfmiddlewaretoken", csrf_token);
+    
+            $.ajax({
+            type:'POST',
+            url:"/campusregistration{{para}}",
+            processData: false,
+            contentType : false,
+            data:formData,
+              success: function (data) {
+        
+              }
+            })
+            }
+            function urltext(){
+                try{document.getElementById('url').value="/updates/"+document.getElementById('urltext').value}catch{}
+            
+            }
+            function campusradioupdate(){
+                var formData = new FormData();
+                csrf_token = $('input[name="csrfmiddlewaretoken"]').val();
+                formData.append("csrfmiddlewaretoken", csrf_token);
+                formData.append("date", $('input[name="date"]').val());
+                formData.append("urltext", $('input[name="urltext"]').val());
+                formData.append("url", $('input[name="url"]').val());
+                formData.append("file", $('input[id="file"]')[0].files[0]);
+            
+            
+                $.ajax({
+                type:'POST',
+                url:"/postupdate/campus{{para}}",
+                processData: false,
+                contentType : false,
+                data:formData,
+                  success: function (data) {
+                    try{document.getElementById('addupdate').style="display:none;"}catch{}
+        try{document.getElementById('middle').style="position:relative;"}catch{}
+            try{document.getElementById('left-bar').style="margin-top:-10px;;"}catch{}            
+                  }
+                })
+                }
+
+    </script>
+</html>

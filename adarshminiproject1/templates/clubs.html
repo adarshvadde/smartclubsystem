@@ -1,0 +1,109 @@
+
+<html>
+        <head>
+            <title>GIT</title>
+        </head>
+        <script src="https://code.jquery.com/jquery-3.5.1.js"integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc="crossorigin="anonymous"></script>
+
+    <style>
+        * {
+            box-sizing: border-box;
+          }
+a{text-decoration:none;color:black}
+        li{list-style:none}          input:focus{background-color: #D3F8F9;transition: all 1s ease 0s;border: 1px solid transparent;outline: 0;}a{text-decoration:none;color:black}
+        li{list-style:none}          input:focus{background-color: #D3F8F9;transition: all 1s ease 0s;border: 1px solid transparent;outline: 0;}
+        #left-bar{width:160px;background-image: linear-gradient(135deg, #ABDCFF 10%, #0396FF 100%);height:1400px;position:fixed;margin-top:-10px;}
+        #left-bar ul{margin-left:-35px;margin-top:100px;}
+        #left-bar li{list-style: none;width:150px;border-radius:30px;margin-top:20px;background-image: linear-gradient(135deg, #E3FDF5 10%, #FFE6FA 100%);font-size:20px;padding:5px 5px 5px 15px;border:1px solid transparent;}
+        #left-bar li:hover{background-image: linear-gradient(55deg, #F97794 10%, #ABDCFF 100%);}
+        #pic{height:100px;width:100px;border-radius:50px;margin-left:30px;margin-top:80px;}
+        #pic img{height:100px;width:100px;border-radius:50px;}
+        #name{margin-left:5px;width:150px;text-align:center;margin-top:15px;padding-top:7px;border-radius:5px;background:white;}
+        #midd{height:900px;background:white;width:1305px;margin-left:165px;margin-top:-10px;position:relative;border-radius:5px;}
+        #logo{background-image: linear-gradient(190deg, #ABDCFF 50%, #0396FF 100%);width:1305px;text-align:center;border-radius:5px;}
+        #dip{width:257px;height:252px;border-radius:5px;display:inline-block;background-image: linear-gradient(190deg, #ABDCFF 50%, #86FDE8 100%);padding:5px 5px 5px 5px;margin-top:30px; }
+        #dip img{width:248px;height:200px;border-radius:5px;  background:white;  }
+        #dip div{width:248px;height:40px;border-radius:5px; text-align:center;padding:5px 5px 5px 5px; background:white;margin-top:3px;  }
+
+        body::-webkit-scrollbar{width:1px;}
+        body { overflow-x: hidden;}
+    </style>
+    <body >
+        <div id="left-bar">
+             <a href="/profile{{para}}"><div id="pic">
+                <img src="{{profile_img}}">
+            </div>
+            <div id="name">{{name}}</div></a>
+            <ul>
+                <a href="/{{para1}}"><li>Home</li></a>
+                <a href="/about{{para}}"><li>About</li></a>
+                <a href="/departments{{para}}"><li>Departments</li></a>
+                <a href="/clubs{{para}}"><li>Clubs</li></a>
+                <a href="/trainingandplacement{{para}}" ><li style="font-size:15px;">Training placement</li></a>
+                 <a href="/{{log.0}}"><li>{{log.1}}</li></a>
+            </ul>
+        </div>
+        <div id="midd">
+            <div id="logo">
+                <img src="/static/Gates.png" >
+                <div style=" font-size:20px;margin-left:1010px;margin-top:-89px;padding-bottom:15px;padding-top:5px;text-align:left">Contacts:<br>
+                    Email:vaddeadarsh150@gmail.com<br>
+                    Phone:8328267589
+                </div>
+            </div>
+            <div style="margin-top:2px;background-image: linear-gradient(190deg, #ABDCFF 50%, #86FDE8 100%);">
+            <a href="/pythonclub{{para}}"><div id="dip">                
+                <img src="/static/Pp0.jpg" >
+                <div> Python Club</div>
+            </div></a>
+            <a href="/codingclub{{para}}"><div id="dip">                
+                <img src="/static/Coding club.png" >
+                <div> Codeing Club</div>
+
+            </div></a>
+            <a href="/campus{{para}}"><div id="dip">                
+                <img src="/static/cr.jpg" >
+                <div> Campus Radio</div>
+
+            </div></a>
+            <a href="/graphicclub{{para}}"><div id="dip">                
+                <img src="/static/GDC LOGO.jpg" >
+                <div> Graphic Club</div>
+
+            </div></a>
+            <a href="/ideaclub{{para}}"><div id="dip">                
+                <img src="/static/idea.jpg" >
+                <div> Idea Club</div>
+
+            </div></a>
+            <a href="/literacyclub{{para}}"><div id="dip">                
+                <img src="/static/Screenshot_20230310-131148_WhatsApp.jpg" >
+                <div>Literacy Club</div>
+
+            </div></a>
+            <a href="/projectclub{{para}}"><div id="dip">                
+                <img src="/static/pclub.jpg" >
+                <div>Project Club</div>
+
+            </div></a>
+            <a href="/speakingclub{{para}}"><div id="dip">                
+                <img src="/static/spe.jpeg" >
+                <div> Speaking Club</div>
+
+            </div></a>
+            <a href="/innerwheelclub{{para}}"><div id="dip">                
+                <img src="/static/iweel.jpeg" >
+                <div> Innerwheel Club</div>
+
+            </div></a>
+            <a href="/euphoriaclub{{para}}"><div id="dip">                
+                <img src="/static/cultural-club-euphoria-2-1024x496.png" >
+                <div> Euphoria Club</div>
+
+            </div></a>
+        </div>
+         </div>
+            {% include 'speech.html'%}
+    </body>
+    
+    </html>
